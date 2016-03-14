@@ -9,7 +9,7 @@ class App{
 	
 	private static $_instance;
 	
-	private $title = 'roadtriphelper';
+	private $title = 'RoadTripHelper';
 	
 	private $db_instance;
 

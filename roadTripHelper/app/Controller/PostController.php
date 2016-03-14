@@ -22,13 +22,19 @@ class PostController extends AppController{
 	}
 	
 	public function index() {
+
+		$this->render('post.index');
+		
+	}
+	
+	public function experiences() {
 		
 		$posts = $this->Post->last();
 		
 		$categories = $this->Categorie->all();
 		
 
-		$this->render('post.index',compact('posts','categories'));
+		$this->render('post.experiences',compact('posts','categories'));
 		
 	}
 	

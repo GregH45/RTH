@@ -38,5 +38,5 @@ if(isset($_GET['p'])){
 	$controller->$action();
 	
 	
-
+?>
 
