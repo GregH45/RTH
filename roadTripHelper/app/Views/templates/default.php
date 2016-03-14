@@ -31,6 +31,7 @@ body {
 <!--<div class="navbar-inner">-->
 <!--<div class="container">-->
 <!--<a class="brand" href="index.php">Road Trip Helper</a>-->
+<div class="container">
 <nav class="navbar navbar-default">
   <div class="container">
     <a class="navbar-brand" href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
@@ -38,6 +39,7 @@ body {
     <a class="navbar-brand" href="index.php?p=post.experiences">Expériences</a>
   </div>
 </nav>
+
 
 <!--</div>-->
 <!--</div>-->
@@ -48,7 +50,7 @@ body {
 	<?= $content;  ?>
 
 </div> <!-- /container -->
-
+</div>
 
 
 </body>
