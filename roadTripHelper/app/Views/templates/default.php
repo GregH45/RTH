@@ -1,4 +1,4 @@
-
+<!-- Template du site -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,44 +12,34 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <style>
 body {
-	padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+	padding-top: 50px;
 }
 </style>
 
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-<script src="../assets/js/html5shiv.js"></script>
-<![endif]-->
-
 <title><?=App::getInstance()->getTitle()?></title>
-
-<!-- Fav and touch icons -->
 </head>
 
 <body>
-<!--<div class="navbar navbar-inverse navbar-fixed-top">-->
-<!--<div class="navbar-inner">-->
-<!--<div class="container">-->
-<!--<a class="brand" href="index.php">Road Trip Helper</a>-->
+
+<!-- Navbar --> 
 <div class="container">
 <nav class="navbar navbar-default">
   <div class="container">
     <a class="navbar-brand" href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
     <a class="navbar-brand" href="#">Road Trip</a>
     <a class="navbar-brand" href="index.php?p=post.experiences">Expériences</a>
+	<!--<p style="padding-left : 8px;" class="navbar-text">RoadTripHelper, mon guide de voyage</p>-->
+	<p style="padding-right : 40px"><a class="navbar-brand navbar-right" href="index.php?p=users.login">Se connecter</a></p>
+	</ul>
   </div>
 </nav>
 
-
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-
+<!-- Contenu de la page -->
 <div class="container">
 
 	<?= $content;  ?>
 
-</div> <!-- /container -->
+</div>
 </div>
 
 
