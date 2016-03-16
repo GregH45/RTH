@@ -29,7 +29,7 @@ body {
     <a class="navbar-brand" href="#">Road Trip</a>
     <a class="navbar-brand" href="index.php?p=post.experiences">Expériences</a>
 	<!--<p style="padding-left : 8px;" class="navbar-text">RoadTripHelper, mon guide de voyage</p>-->
-	<p style="padding-right : 40px"><a class="navbar-brand navbar-right" href="index.php?p=users.login">Se connecter</a></p>
+	<p style="padding-right : 40px"><a class="navbar-brand navbar-right" href="index.php?p=users.login">Login</a></p>
 	</ul>
   </div>
 </nav>

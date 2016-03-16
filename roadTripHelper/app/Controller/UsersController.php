@@ -31,7 +31,17 @@ class UsersController extends AppController{
 		$this->render('user.login', compact('form','errors'));
 		
 		
-		}
+	}
+	
+	public function newAccount(){
+		
+		$errors = false;
+		
+		
+		
+		
+		
+	}
 }
 	
 	
