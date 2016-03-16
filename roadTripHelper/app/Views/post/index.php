@@ -20,7 +20,7 @@
 			</div>
 			<div class="col-md-5">
 			  <h2 style="padding-left:50px">Expériences</h2>
-			  <p style="padding-left:50px">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+			  <p style="padding-left:50px">Découvrez les anectodes de voyages des autres RoadTripers et réagissez y si vous disposez d'un compte. Postez vos propres expériences et partagez des posts sur vos réseaux sociaux favoris.  </p>
 			  <p style="padding-left:50px"><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
 		   </div>
 		  </div>
