@@ -27,12 +27,15 @@ class MysqlDatabase extends Database{
 		
 		return $pdo;
 	}
-
+	/*
+	*
+	*
+	*
+	*/
 	public function query($statement,$class_name = null, $one = false){
 
-		
+
 		$req = $this->getPDO()->query($statement);
-		
 		//Si on a ce genre de requete, cela ne sert à rien d'aller plus loin,
 		//le fetchall ou autre planterais
 		if(

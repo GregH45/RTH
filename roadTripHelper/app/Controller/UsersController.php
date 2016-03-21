@@ -34,11 +34,23 @@ class UsersController extends AppController{
 	}
 	
 	public function newAccount(){
-		
 		$errors = false;
+
+		if(!empty($_POST))
+		{
+			$auth = new DBAuth(App::getInstance()->getDb());
+			if($auth->newAccount($_POST['name'], $_POST['lastname'], $_POST['username'], $_POST['email'], $_POST['password'])){
+				header('Location: index.php?p=admin.post.index');
+			}
 		
-		
-		
+			else{
+				
+				$errors = true;
+		}
+		}
+
+		$form = new  BootstrapForm($_POST);
+		$this->render('user.newAccount', compact('form','errors'));		
 		
 		
 	}

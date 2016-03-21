@@ -1,9 +1,10 @@
+
 <img class="banner" src="img/create_banner.php" alt="Banner" /> </br>
 
 <div class="jumbotron">
 	<h1>Rejoignez les RoadTripers</h1>
 	<p class="lead">Partagez vos expériences avec les autres voyageurs en vous créant un compte. Commentez les anectodes des autres et partagez sur vos réseaux sociaux favoris.</p>
-	<p><a class="btn btn-lg btn-success" href="#" role="button">Se créer un compte</a></p>
+	<p><a class="btn btn-lg btn-success" href="index.php?p=users.newAccount" role="button">Se créer un compte</a></p>
 </div>
 <!-- Example row of columns -->
 
@@ -19,3 +20,4 @@
 		<p><a class="btn btn-default" href="index.php?p=post.experiences" role="button">Je découvre &raquo;</a></p>
     </div>
 </div>
+
