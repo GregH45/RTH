@@ -52,18 +52,23 @@ Class DBAuth{
 		
 		$criptedPassword = sha1($password);
 		
-		if (filter_var($email, FILTER_VALIDATE_EMAIL)!== false) {
+		$user = $this->db->prepare('SELECT *
+					FROM user
+					WHERE username = ?',[$username], null, true);
+					
+		if($user){
+			return 1;
+		} else if (filter_var($email, FILTER_VALIDATE_EMAIL)!== false) {
 			
 			$this->db->query("INSERT INTO user
 							  VALUES ('','".$username."','".$criptedPassword."','".$name."','".$lastname."','".$email."')",null,false);
 			
 			if($this->login($username, $password)){
-				return true;
+				return 0;
 			}			
+		}else{		
+			return 2;
 		}
-		
-			return false;
-		
 		
 	}
 	

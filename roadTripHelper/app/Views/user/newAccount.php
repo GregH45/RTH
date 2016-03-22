@@ -1,16 +1,10 @@
-<?php  if($errors) : ?>
+<?php if($errors!="0"){ 
+	echo "<div class='alert alert-danger'>".$errors."</div>" ;
+} ?>
 	
-	<div class="alert alert-danger">
-	
-		Informations erronées
-	
-	</div>
-
-
-<?php  endif;?>
-
+	<div class="col-sm-push-3 col-sm-6">
 		<form method = "post">
-			<h2> Créer un compte </br></br></h2>
+			<h4 align="right"> Créer un compte </h4>
 			<?php echo $form->input('lastname','Nom');?>
 			<?php echo $form->input('name','Prenom');?>
 			<?php echo $form->input('username','Pseudo');?>
@@ -18,3 +12,4 @@
 			<?php echo $form->input('password','Mot de passe', ['type' => 'password']);?>
 			<?php echo $form->submit('Se créer un compte');?>
 		</form>
+	</div>
