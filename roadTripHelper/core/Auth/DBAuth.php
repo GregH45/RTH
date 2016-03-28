@@ -35,7 +35,6 @@ Class DBAuth{
 									',[$username], null, true);
 		if($user){
 			if ($user->password === sha1($password)){
-				
 				$_SESSION['auth'] = $user->id;
 				return true;
 			}
@@ -44,10 +43,38 @@ Class DBAuth{
 		
 	}
 	
+	public function logout(){
+		$_SESSION['auth'] = -1;
+		
+		return true;
+	}
+	
 	public function logged(){  return isset($_SESSION['auth']);  }
 	
 	
+	public function getUsername(){
+		
+		
+			$userId = $this->getUserId();
+		
+			if($userId != false && $userId>0){
+			
+				$user = $this->db->prepare('SELECT *
+						FROM user
+						WHERE id = ?',[$userId], null, true);
+		
+				$user->username;
+				return $user->username;	
+			}
+				return false; 	
+	}
+	
+	
 	public function newAccount($name, $lastname, $username, $email, $password){
+		
+		if($name=="" || $lastname=="" || $username=="" || $password=="" || $email == ""){
+			return 1;
+		}
 		
 		
 		$criptedPassword = sha1($password);
@@ -57,7 +84,7 @@ Class DBAuth{
 					WHERE username = ?',[$username], null, true);
 					
 		if($user){
-			return 1;
+			return 2;
 		} else if (filter_var($email, FILTER_VALIDATE_EMAIL)!== false) {
 			
 			$this->db->query("INSERT INTO user
@@ -67,7 +94,7 @@ Class DBAuth{
 				return 0;
 			}			
 		}else{		
-			return 2;
+			return 3;
 		}
 		
 	}

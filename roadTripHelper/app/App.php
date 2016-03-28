@@ -53,5 +53,14 @@ class App{
 	public function setTitle($name){
 		 $this->title = $name;
 	}
+	
+	public function getUsername(){
+			
+		$class_name = 'App\Controller\UsersController';
+		$usersController = new $class_name();
+		
+		return $usersController->getUsername();
+	
+	}
 
 }

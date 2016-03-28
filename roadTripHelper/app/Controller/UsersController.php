@@ -7,7 +7,7 @@ namespace App\Controller;
 use Core\HTML\BootstrapForm;
 use  Core\Auth\DBAuth;
 use \App;
-
+	
 class UsersController extends AppController{
 	
 	
@@ -33,6 +33,31 @@ class UsersController extends AppController{
 		
 	}
 	
+	public function logout(){
+		
+		$auth = new DBAuth(App::getInstance()->getDb());
+		$userName = $auth->getUsername();
+			if($userName != false){
+				$auth->logout();
+			}
+		header('Location: index.php');
+	}
+	
+	
+	public function getUsername(){
+		
+		$auth = new DBAuth(App::getInstance()->getDb());
+		$userName = $auth->getUsername();
+		
+		if($userName != false){
+			return $userName;
+		} else {
+			return 'Login';
+		}	
+		
+	}
+	
+	
 	public function newAccount(){
 		
 		$errors = 0;
@@ -45,8 +70,10 @@ class UsersController extends AppController{
 			if($errors==0){
 				header('Location: index.php?p=admin.post.index');
 			} else if($errors==1){
-				$errors = "Username \"".$_POST['username']."\" déjà utilisé";
+				$errors = "Veuillez remplir tous les champs";
 			} else if($errors==2){
+				$errors = "Username \"".$_POST['username']."\" déjà utilisé";	
+			} else if($errors==3){
 				$errors = "Veuillez saisir une adresse mail valide";
 			} else {
 				$errors = "Informations erronées";
