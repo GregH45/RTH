@@ -38,7 +38,7 @@
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 			              	<li><a href="index.php?p=users.login"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?=App::getUsername()?></a></li>
-							<li><a href="index.php?p=users.logout"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></a></li>
+							<?php if(App::getUsername()!="Login") { echo("<li><a href='index.php?p=users.logout'><span class='glyphicon glyphicon-off' aria-hidden='true'></span></a></li>"); }?>
 			            </ul>
 			  		</div>
 				</div>
@@ -51,8 +51,8 @@
 		</div><br />
 
 		<!-- Footer -->
-		<footer class="panel-footer">
-      		<div class="container">
+		<footer class="panel-footer" >
+      		<div class="container" >
         		<p class="text-muted text-center">Luc Bettuzzi, Grégoire Harba , Marine Legros et Mathilde Prévost - <a href="mailto:roadtriphelper2@gmail.com">Contact</a>
         		- <a href="#"><img class="icone" src="img/facebook.png" alt="facebook" /></a> - <a href="#"><img class="icone" src="img/twitter.png" alt="twitter" /></a></p>
       		</div>

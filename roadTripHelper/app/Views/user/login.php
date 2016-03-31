@@ -9,7 +9,7 @@
 
 <?php 
 if(App::getUsername()!='Login'){
-	header('Location: index.php?p=users.page');
+	header('Location: index.php?p=users.pagePerso');
 }?>
 
 		<div class="col-sm-push-3 col-sm-6">

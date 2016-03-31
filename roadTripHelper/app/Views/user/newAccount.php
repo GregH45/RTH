@@ -1,7 +1,11 @@
-<?php if($errors!="0"){ 
+<?php 
+if($errors!="0"){ 
 	echo "<div class='alert alert-danger'>".$errors."</div>" ;
-} ?>
-	
+} 
+if(App::getUsername()!='Login'){
+	echo "<div class='alert alert-danger'>Vous êtes déjà connecté</div>";
+}
+?>
 	<div class="col-sm-push-3 col-sm-6">
 		<form method = "post">
 			<h4 align="right"> Créer un compte </h4>

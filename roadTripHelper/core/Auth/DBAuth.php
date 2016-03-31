@@ -44,8 +44,8 @@ Class DBAuth{
 	}
 	
 	public function logout(){
-		$_SESSION['auth'] = -1;
 		
+		$_SESSION['auth'] = -1;
 		return true;
 	}
 	
@@ -53,7 +53,6 @@ Class DBAuth{
 	
 	
 	public function getUsername(){
-		
 		
 			$userId = $this->getUserId();
 		
@@ -63,7 +62,6 @@ Class DBAuth{
 						FROM user
 						WHERE id = ?',[$userId], null, true);
 		
-				$user->username;
 				return $user->username;	
 			}
 				return false; 	
@@ -75,8 +73,7 @@ Class DBAuth{
 		if($name=="" || $lastname=="" || $username=="" || $password=="" || $email == ""){
 			return 1;
 		}
-		
-		
+				
 		$criptedPassword = sha1($password);
 		
 		$user = $this->db->prepare('SELECT *
@@ -92,7 +89,8 @@ Class DBAuth{
 			
 			if($this->login($username, $password)){
 				return 0;
-			}			
+			}	
+			
 		}else{		
 			return 3;
 		}
