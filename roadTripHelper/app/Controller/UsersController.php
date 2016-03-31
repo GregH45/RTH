@@ -68,7 +68,7 @@ class UsersController extends AppController{
 			$errors = $auth->newAccount($_POST['name'], $_POST['lastname'], $_POST['username'], $_POST['email'], $_POST['password']);
 			
 			if($errors==0){
-				header('Location: index.php?p=admin.post.index');
+				header('Location: index.php?p=users.pagePerso');
 			} else if($errors==1){
 				$errors = "Veuillez remplir tous les champs";
 			} else if($errors==2){
