@@ -27,6 +27,12 @@ class PostController extends AppController{
 		
 	}
 	
+	public function roadTrip() {
+
+		$this->render('post.roadTrip');
+		
+	}
+	
 	public function experiences() {
 		
 		$posts = $this->Post->last();

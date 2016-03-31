@@ -8,7 +8,7 @@
 </div>
 <!-- Example row of columns -->
 
-<div class="row marketing">
+<div style="padding-left:10px" class="row marketing">
     <div class="col-lg-6">
     	<h2>Organiser un RoadTrip</h2>
         <p>Planifiez votre road trip en choisissant les destinations que vous souhaitez inclure au voyage. Choisissez un parcours proposé ou personnalisez le entièrement. Obtenez des informations complémentaires sur vos destinations choisies. </p>

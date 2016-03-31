@@ -87,7 +87,6 @@ class UsersController extends AppController{
 	}
 	
 	public function pagePerso(){
-		
 		$this->render('user.pagePerso');
 	}
 }

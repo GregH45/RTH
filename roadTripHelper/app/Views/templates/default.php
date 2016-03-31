@@ -33,7 +33,7 @@
 
 			    	<div id="navbar" class="navbar-collapse collapse">
 			            <ul class="nav navbar-nav">
-			    			<li><a href="#">Road Trip</a></li>
+			    			<li><a href="index.php?p=post.roadTrip">Road Trip</a></li>
 			    			<li><a href="index.php?p=post.experiences">Expériences</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
