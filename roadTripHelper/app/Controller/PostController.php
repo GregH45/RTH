@@ -10,7 +10,7 @@ use Core\Controller\Controller;
 
 class PostController extends AppController{
 	
-	
+
 	
 	
 	public function __construct(){
@@ -38,9 +38,11 @@ class PostController extends AppController{
 		$posts = $this->Post->last();
 		
 		$categories = $this->Categorie->all();
+
+		//$countries = $this->getCountriesByContinent('Europe');		
 		
 
-		$this->render('post.experiences',compact('posts','categories'));
+		$this->render('post.experiences',compact('posts','categories', 'countries'));
 		
 	}
 	
@@ -70,6 +72,13 @@ class PostController extends AppController{
 		$this->render('post.show', compact('article'));
 		
 	}
+
+	/*public function getCountriesByContinent($continent){
+		return $db->prepare('SELECT Name
+						FROM country c, encompasses e 
+						WHERE c.Code = e.Country AND e.Continent = ?',[$continent], null, true);
+	
+	}*/
 
 
 

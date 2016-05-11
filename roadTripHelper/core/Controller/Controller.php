@@ -26,7 +26,7 @@ class Controller{
 
 	protected function forbidden(){
 		header('HTTP/1.0 403 Forbidden');
-		die('Acc�s interdit');
+		die('Accès interdit');
 	}
 	
 	
@@ -34,5 +34,6 @@ class Controller{
 		header('HTTP/1.0 404 Not Found');
 		die('Page introuvable');
 	}
+
 	
 }
