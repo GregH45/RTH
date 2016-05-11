@@ -7,3 +7,9 @@ img.banner {
   	height:100%;
   	display:block;
 }
+
+.footerFonce {
+	background-color: #eee;
+	border-color: #e7e7e7;
+	border-radius: 6px;
+}
