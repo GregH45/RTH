@@ -2756,7 +2756,7 @@ select.input-lg {
 }
 textarea.input-lg,
 select[multiple].input-lg {
-  height: auto;
+  height: auto; 
 }
 .form-group-lg .form-control {
   height: 46px;
