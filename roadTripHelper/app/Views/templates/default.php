@@ -51,12 +51,14 @@
 		</div><br />
 
 		<!-- Footer -->
-		<footer class="panel-footer" >
-      		<div class="container" >
-        		<p class="text-muted text-center">Luc Bettuzzi, Grégoire Harba , Marine Legros et Mathilde Prévost - <a href="mailto:roadtriphelper2@gmail.com">Contact</a>
-        		- <a href="#"><img class="icone" src="img/facebook.png" alt="facebook" /></a> - <a href="#"><img class="icone" src="img/twitter.png" alt="twitter" /></a></p>
-      		</div>
-    	</footer>
+		<div class="container">
+			<footer class="footer footerFonce" >
+	      		<div class="container" >
+	        		<p class="text-muted text-center">Luc Bettuzzi, Grégoire Harba , Marine Legros et Mathilde Prévost - <a href="mailto:roadtriphelper2@gmail.com">Contact</a>
+	        		- <a href="#"><img class="icone" src="img/facebook.png" alt="facebook" /></a> - <a href="#"><img class="icone" src="img/twitter.png" alt="twitter" /></a></p>
+	      		</div>
+	    	</footer>
+    	</div>
 		<!--  -->
 
     	<!-- Bootstrap core JavaScript
