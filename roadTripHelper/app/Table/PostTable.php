@@ -56,4 +56,11 @@ class PostTable extends Table{
 				WHERE article.id = ?
 				", [$id],true);
 	}
+	
+	public function getCountriesByContinent($continent){
+		return $this->query("SELECT Name
+						FROM country c, encompasses e 
+						WHERE c.Code = e.Country AND e.Continent = ?",[$continent], null, true);
+	
+	}
 }

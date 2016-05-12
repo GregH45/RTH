@@ -39,7 +39,7 @@ class PostController extends AppController{
 		
 		$categories = $this->Categorie->all();
 
-		//$countries = $this->getCountriesByContinent('Europe');		
+		$countries = $this->Post->getCountriesByContinent('Europe');		
 		
 
 		$this->render('post.experiences',compact('posts','categories', 'countries'));

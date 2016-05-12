@@ -17,10 +17,9 @@
 				<li><a href="#">...</a></li>
 			<li class="dropdown-header">Pays</li>
 			<!-- PHP : foreach  ($pays as $Pays):  -->
-				<li><a href="#">NOM PAYS 1</a></li>
-				<li><a href="#">NOM PAYS 2</a></li>
-				<li><a href="#">NOM PAYS 3</a></li>
-				<li><a href="#">...</a></li>
+				<?php  foreach ($countries as $country):  ?>
+					<li><a href="#"><?= $country->Name ?></a></li>
+				<?php endforeach?>
 			<li class="dropdown-header">Villes</li>
 			<!-- PHP : foreach  ($villes as $ville):  -->
 				<li><a href="#">NOM VILLE 1</a></li>

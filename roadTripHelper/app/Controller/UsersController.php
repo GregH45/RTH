@@ -11,20 +11,23 @@ use \App;
 class UsersController extends AppController{
 	
 	
+	public function __construct(){	
+		parent::__construct();
+		$this->loadModel('User');		
+	}
+
 	public function login(){
 		
 		$errors = false;
 
 		if(!empty($_POST))
 		{
-			$auth = new DBAuth(App::getInstance()->getDb());
-			if($auth->login($_POST['username'], $_POST['password'])){
+			if($this->User->login($_POST['username'], $_POST['password'])){
 				header('Location: index.php');
 			}
-			else{
-				
-			$errors = true;
-		}
+			else{	
+				$errors = true;
+			}
 		}
 			
 		$form = new  BootstrapForm($_POST);
@@ -35,10 +38,9 @@ class UsersController extends AppController{
 	
 	public function logout(){
 		
-		$auth = new DBAuth(App::getInstance()->getDb());
-		$userName = $auth->getUsername();
+		$userName = $this->User->getUsername();
 			if($userName != false){
-				$auth->logout();
+				$this->User->logout();
 			}
 		header('Location: index.php');
 	}
@@ -46,8 +48,7 @@ class UsersController extends AppController{
 	
 	public function getUsername(){
 		
-		$auth = new DBAuth(App::getInstance()->getDb());
-		$userName = $auth->getUsername();
+		$userName = $this->User->getUsername();
 		
 		if($userName != false){
 			return $userName;
@@ -64,8 +65,7 @@ class UsersController extends AppController{
 
 		if(!empty($_POST))
 		{
-			$auth = new DBAuth(App::getInstance()->getDb());
-			$errors = $auth->newAccount($_POST['name'], $_POST['lastname'], $_POST['username'], $_POST['email'], $_POST['password']);
+			$errors = $this->User->newAccount($_POST['name'], $_POST['lastname'], $_POST['username'], $_POST['email'], $_POST['password']);
 			
 			if($errors==0){
 				header('Location: index.php?p=users.pagePerso');
