@@ -11,21 +11,19 @@
 		<ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
 			<li class="dropdown-header">Continents</li>
 			<!-- PHP : foreach  ($continents as $continent):  -->
-				<li><a href="#">NOM CONTINENT 1</a></li>
-				<li><a href="#">NOM CONTINENT 2</a></li>
-				<li><a href="#">NOM CONTINENT 3</a></li>
-				<li><a href="#">...</a></li>
+				<?php  foreach ($continents as $continent):  ?>
+					<li><a href="<?= $continent->url;?>"><?= $continent->Name ?></a></li>
+				<?php endforeach?>
 			<li class="dropdown-header">Pays</li>
 			<!-- PHP : foreach  ($pays as $Pays):  -->
 				<?php  foreach ($countries as $country):  ?>
-					<li><a href="#"><?= $country->Name ?></a></li>
+					<li><a href="<?= $country->url;?>"><?= $country->Name ?></a></li>
 				<?php endforeach?>
 			<li class="dropdown-header">Villes</li>
 			<!-- PHP : foreach  ($villes as $ville):  -->
-				<li><a href="#">NOM VILLE 1</a></li>
-				<li><a href="#">NOM VILLE 2</a></li>
-				<li><a href="#">NOM VILLE 3</a></li>
-				<li><a href="#">...</a></li>
+				<?php  foreach ($cities as $city):  ?>
+					<li><a href="#"><?= $city->Name ?></a></li>
+				<?php endforeach?>
 		</ul>
 	</div>
 

@@ -10,8 +10,6 @@ use Core\Controller\Controller;
 
 class PostController extends AppController{
 	
-
-	
 	
 	public function __construct(){
 		
@@ -36,16 +34,28 @@ class PostController extends AppController{
 		
 	}
 	
-	public function experiences() {
-		
+	public function experiences() {		
+		$continents = $this->Continent->all();
+
 		$posts = $this->Post->last();
 		
 		$categories = $this->Categorie->all();
 
-		$countries = $this->Post->getCountriesByContinent('Europe');		
+		if(isset($_GET['id'])) {
+			$countries = $this->Country->getCountriesByContinent($_GET['id']);	
+		}
+		else {
+			$countries = $this->Country->all();
+		}
+		if(isset($_GET['code'])) {
+			$cities = $this->City->getCitiesByCountry($_GET['code']);
+		}
+		else {
+			$cities = $this->City->all();
+		}
 		
 
-		$this->render('post.experiences',compact('posts','categories', 'countries'));
+		$this->render('post.experiences',compact('posts','categories', 'continents', 'countries', 'cities'));
 		
 	}
 	
