@@ -11,8 +11,4 @@ class CategorieEntity extends Entity{
 		return 'index.php?p=post.categorie&id='.$this->id;
 	}
 	
-
-	
-	
-	
 }

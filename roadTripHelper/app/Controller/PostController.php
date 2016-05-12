@@ -18,6 +18,9 @@ class PostController extends AppController{
 		parent::__construct();
 		$this->loadModel('Post');
 		$this->loadModel('Categorie');
+		$this->loadModel('Continent');
+		$this->loadModel('Country');
+		$this->loadModel('City');
 		
 	}
 	
@@ -72,16 +75,6 @@ class PostController extends AppController{
 		$this->render('post.show', compact('article'));
 		
 	}
-
-	/*public function getCountriesByContinent($continent){
-		return $db->prepare('SELECT Name
-						FROM country c, encompasses e 
-						WHERE c.Code = e.Country AND e.Continent = ?',[$continent], null, true);
-	
-	}*/
-
-
-
 
 
 }
