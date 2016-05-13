@@ -36,11 +36,7 @@ class PostController extends AppController{
 	
 	public function experiences() {		
 		$continents = $this->Continent->all();
-
-		//$posts = $this->Post->last();
-		
 		$categories = $this->Categorie->all();
-
 		if(isset($_GET['id'])) {
 			$countries = $this->Country->getCountriesByContinent($_GET['id']);	
 		}
@@ -53,13 +49,9 @@ class PostController extends AppController{
 		else {
 			$cities = $this->City->all();
 		}
-
 		$experiences = $this->Post->all();
-		
-
-		//$this->render('post.experiences',compact('posts','categories', 'continents', 'countries', 'cities', 'experiences'));
 		$this->render('post.experiences',compact('categories', 'continents', 'countries', 'cities', 'experiences'));
-		
+
 	}
 	
 	public function categorie() {

@@ -2,7 +2,33 @@
 <div style='padding-left:10px'  class="col-sm-1">
 <!-- PROPOSITION 1 FILTER -->
 
+<<<<<<< HEAD
 	
+=======
+	<div class="dropdown">
+	<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Filtrer
+    <span class="caret"></span>
+	</button>
+		<ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
+			<li class="dropdown-header">Continents</li>
+			<!-- PHP : foreach  ($continents as $continent):  -->
+				<?php  foreach ($continents as $continent):  ?>
+					<li><a href="<?= $continent->url;?>"><?= $continent->Name ?></a></li>
+				<?php endforeach?>
+			<li class="dropdown-header">Pays</li>
+			<!-- PHP : foreach  ($pays as $Pays):  -->
+				<?php  foreach ($countries as $country):  ?>
+					<li><a href="<?= $country->url;?>"><?= $country->Name ?></a></li>
+				<?php endforeach?>
+			<li class="dropdown-header">Villes</li>
+			<!-- PHP : foreach  ($villes as $ville):  -->
+				<?php  foreach ($cities as $city):  ?>
+					<li><a href="#"><?= $city->Name ?></a></li>
+				<?php endforeach?>
+		</ul>
+	</div>
+>>>>>>> ff178980e377bcee8d7700b9a3e79fa7af2eaf1f
 
 	
 </br></br>

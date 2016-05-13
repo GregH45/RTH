@@ -57,7 +57,6 @@ class PostTable extends Table{
 				", [$id],true);
 	}
 
-		
 	public function addLike($id) {
 		$nb = $this->getNbLikes($id) +1;
 		return $this->query("UPDATE experience
