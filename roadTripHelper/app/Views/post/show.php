@@ -1,6 +1,6 @@
 
-<h1><?= $article->titre;?></h1>
+<h1><?= $experience->titre;?></h1>
 
-<p><em><?= $article->categorie;?></em></p>
-
-<p><?= $article->contenu; ?></p>
+<p><?= $experience->description;?></p>
+<p>Les plus : <?= $experience->plus;?></p>
+<p>Les moins : <?= $experience->moins;?></p>

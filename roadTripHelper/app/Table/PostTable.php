@@ -6,10 +6,10 @@ use \Core\Table\Table;
 class PostTable extends Table{
 	
 	
-	protected $table = 'article';
+	protected $table = 'experience';
 	
 	/**
-	 * Récupère els derniers articles
+	 * Récupère les derniers articles
 	 * @return array
 	 */
 	
@@ -56,11 +56,23 @@ class PostTable extends Table{
 				WHERE article.id = ?
 				", [$id],true);
 	}
-	
-	public function getCountriesByContinent($continent){
-		return $this->query("SELECT Name
-						FROM country c, encompasses e 
-						WHERE c.Code = e.Country AND e.Continent = ?",[$continent], null, true);
-	
+
+		
+	public function addLike($id) {
+		$nb = $this->getNbLikes($id) +1;
+		return $this->query("UPDATE experience
+				SET nb_likes = ?
+				WHERE id = ?
+				", [$nb, $id],true);
 	}
+
+	public function getNbLikes($id) {
+		$datas = $this->query("
+				SELECT nb_likes
+				FROM experience  
+				WHERE id = ?
+				", [$id],true);
+		return $datas->nb_likes;
+	}
+
 }

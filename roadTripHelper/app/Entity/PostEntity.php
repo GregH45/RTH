@@ -17,8 +17,7 @@ class PostEntity extends Entity{
 		$html .= '<p><a href="'.$this->getURL().'">voir la suite</a></p>';
 		return $html;
 	}
-	
-	
+
 	
 	
 }

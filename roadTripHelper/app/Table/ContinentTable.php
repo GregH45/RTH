@@ -8,5 +8,6 @@ class ContinentTable extends Table{
 	protected $table = "continent";
 
 	
+	
 
 }

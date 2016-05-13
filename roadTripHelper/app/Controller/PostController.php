@@ -10,8 +10,6 @@ use Core\Controller\Controller;
 
 class PostController extends AppController{
 	
-
-	
 	
 	public function __construct(){
 		
@@ -36,16 +34,31 @@ class PostController extends AppController{
 		
 	}
 	
-	public function experiences() {
-		
-		$posts = $this->Post->last();
+	public function experiences() {		
+		$continents = $this->Continent->all();
+
+		//$posts = $this->Post->last();
 		
 		$categories = $this->Categorie->all();
 
-		$countries = $this->Post->getCountriesByContinent('Europe');		
+		if(isset($_GET['id'])) {
+			$countries = $this->Country->getCountriesByContinent($_GET['id']);	
+		}
+		else {
+			$countries = $this->Country->all();
+		}
+		if(isset($_GET['code'])) {
+			$cities = $this->City->getCitiesByCountry($_GET['code']);
+		}
+		else {
+			$cities = $this->City->all();
+		}
+
+		$experiences = $this->Post->all();
 		
 
-		$this->render('post.experiences',compact('posts','categories', 'countries'));
+		//$this->render('post.experiences',compact('posts','categories', 'continents', 'countries', 'cities', 'experiences'));
+		$this->render('post.experiences',compact('categories', 'continents', 'countries', 'cities', 'experiences'));
 		
 	}
 	
@@ -71,9 +84,14 @@ class PostController extends AppController{
 	public function show () {
 	
 
-		$article = $this->Post->findWithCategorie($_GET['id']);
-		$this->render('post.show', compact('article'));
+		$experience = $this->Post->find($_GET['id']);
+		$this->render('post.show', compact('experience'));
 		
+	}
+
+	public function incrementeLike(){
+		$this->Post->addLike($_GET['id']);
+		header('location: http://localhost/RTH/roadTripHelper/public/index.php?p=post.experiences');
 	}
 
 
