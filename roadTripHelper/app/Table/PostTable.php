@@ -13,6 +13,8 @@ class PostTable extends Table{
 	 * @return array
 	 */
 	
+
+
 	public function last()
 	{
 		return $this->query("
@@ -73,5 +75,7 @@ class PostTable extends Table{
 				", [$id],true);
 		return $datas->nb_likes;
 	}
+
+
 
 }

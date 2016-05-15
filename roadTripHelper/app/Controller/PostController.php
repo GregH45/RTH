@@ -35,24 +35,56 @@ class PostController extends AppController{
 	}
 	
 	public function experiences() {		
+
+
 		$continents = $this->Continent->all();
 		$categories = $this->Categorie->all();
+
 		if(isset($_GET['id'])) {
 			$countries = $this->Country->getCountriesByContinent($_GET['id']);	
+			//$countries = $this->Country->all();
+			$currentContinent = $_GET['id'];	
 		}
 		else {
 			$countries = $this->Country->all();
+			$currentContinent = 'Continent';
 		}
+
 		if(isset($_GET['code'])) {
 			$cities = $this->City->getCitiesByCountry($_GET['code']);
+			$currentCountry = $this->Country->getNameByCode($_GET['code']);
+			$currentContinent = $this->Country->getContinent($_GET['code']);
+			$countries = $this->Country->getCountriesByContinent($currentContinent[0]->Name);	
+			$currentCountry = $currentCountry[0]->Name;
+			$currentContinent = $currentContinent[0]->Name;
 		}
 		else {
+			$currentCountry = 'Pays';
 			$cities = $this->City->all();
 		}
+		
+		if(isset($_GET['id2'])) {
+			
+			$currentCity = $_GET['id2'];
+			$currentCountry = $this->City->getCodePaysByCity($_GET['id2']);
+			$cities = $this->City->getCitiesByCountry($currentCountry[0]->Country);
+			$currentContinent = $this->Country->getContinent($currentCountry[0]->Country);
+			$currentCountry = $this->Country->getNameByCode($currentCountry[0]->Country);
+			$currentCountry = $currentCountry[0]->Name;
+			$currentContinent = $currentContinent[0]->Name;
+			$countries = $this->Country->getCountriesByContinent($currentContinent);
+
+
+		}else{
+			$currentCity = 'Villes';
+		}
+
 		$experiences = $this->Post->all();
-		$this->render('post.experiences',compact('categories', 'continents', 'countries', 'cities', 'experiences'));
+
+		$this->render('post.experiences',compact('categories', 'continents', 'countries', 'cities', 'experiences', 'currentContinent', 'currentCountry', 'currentCity'));
 
 	}
+
 	
 	public function categorie() {
 		

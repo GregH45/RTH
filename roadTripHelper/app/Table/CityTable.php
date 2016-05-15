@@ -13,4 +13,13 @@ class CityTable extends Table{
 						WHERE co.Code = ci.Country AND ci.Country = ?",[$country], null, true);
 	
 	}
+
+	public function getCodePaysByCity($city){
+		
+		return $this->query("SELECT c.Country
+				FROM city c
+				WHERE c.Name = ?", [$city]);
+	
+	}
+
 }

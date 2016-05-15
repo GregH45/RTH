@@ -2,33 +2,27 @@
 <div style='padding-left:10px'  class="col-sm-1">
 <!-- PROPOSITION 1 FILTER -->
 
-<<<<<<< HEAD
-	
-=======
-	<div class="dropdown">
+	<!--<div class="dropdown">
 	<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
     Filtrer
     <span class="caret"></span>
 	</button>
-		<ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
-			<li class="dropdown-header">Continents</li>
-			<!-- PHP : foreach  ($continents as $continent):  -->
-				<?php  foreach ($continents as $continent):  ?>
+		
+		 <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
+			<li class="dropdown-header">Continents</li> 
+				<?php /*  foreach ($continents as $continent):  ?>
 					<li><a href="<?= $continent->url;?>"><?= $continent->Name ?></a></li>
-				<?php endforeach?>
+				<?php endforeach */?>
 			<li class="dropdown-header">Pays</li>
-			<!-- PHP : foreach  ($pays as $Pays):  -->
 				<?php  foreach ($countries as $country):  ?>
 					<li><a href="<?= $country->url;?>"><?= $country->Name ?></a></li>
 				<?php endforeach?>
 			<li class="dropdown-header">Villes</li>
-			<!-- PHP : foreach  ($villes as $ville):  -->
 				<?php  foreach ($cities as $city):  ?>
 					<li><a href="#"><?= $city->Name ?></a></li>
 				<?php endforeach?>
 		</ul>
-	</div>
->>>>>>> ff178980e377bcee8d7700b9a3e79fa7af2eaf1f
+	</div> -->
 
 	
 </br></br>
@@ -37,23 +31,26 @@
 
 <div class="dropdown">
   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    Continent
+
+   <?= $currentContinent ?>
+
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
     	<?php  foreach ($continents as $continent):  ?>
-			<li><a href="<?= $continent->url;?>"><?= $continent->Name ?></a></li>
+			<li><a href="http://localhost/WEB_RTH/roadTripHelper/public/index.php?p=post.experiences&id=<?= $continent->Name ?>"><?= $continent->Name ?></a></li>
 		<?php endforeach?>
   </ul>
 </div>
 
 <div class="dropdown">
   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    Pays
+
+  	<?= $currentCountry ?>
+
     <span class="caret"></span>
   </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-  
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">  
     	<?php  foreach ($countries as $country):  ?>
 			<li><a href="<?= $country->url;?>"><?= $country->Name ?></a></li>
 		<?php endforeach?>
@@ -62,46 +59,64 @@
 
 <div class="dropdown">
   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    Villes
+
+    <?= $currentCity ?>
+
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
     <?php  foreach ($cities as $city):  ?>
-		<li><a href="#"><?= $city->Name ?></a></li>
+		<li><a href="<?= $city->url;?>"><?= $city->Name ?></a></li>
 	<?php endforeach?>
   </ul>
 </div>
 </div>
 
-<div class="btn-group" role="group">
+<div style="padding-left:50px" class="btn-group" role="group">
   <button type="button" class="btn btn-default">Trier par date</button>
   <button type="button" class="btn btn-default">Trier par like</button>
 </div>
 </br></br>
-
+</br>
 	<div style='padding-left:40px' class="col-sm-11">
 
-		<?php foreach  ($experiences as $experience): ?>
+		<?php foreach  ($experiences as $experience): 
+			list($plus1, $plus2, $plus3) = split(";", $experience->plus);
+			list($moins1, $moins2, $moins3) = split(";", $experience->moins); ?>
 			
 			<div class="panel panel-default">
-			<div class="panel-heading">
-				<h2 class="panel-title"><a href="<?= $experience->url?>"><?=$experience->titre;?></a></h2>
-			</div>
-			<div class="panel-body">
-				<div class="col-sm-10">
-							
-					<p><?= $experience->description;?></p>
-					<p>Les plus : <?= $experience->plus;?></p>
-					<p>Les moins : <?= $experience->moins;?></p>
-
-				</div>
-				<div align="right" class="col-sm-2">
-					<h3 align="right">
+				<div class="panel-heading">
+				<div class="row">
+					<h3 style='padding-left:20px' align="left" class="panel-title">
+						<a href="<?= $experience->url?>"><?=$experience->titre;?></a>
+					</h3>
+					<h3 align="right" style='padding-right:20px' class="panel-title">
 						<a href='http://localhost/RTH/roadTripHelper/public/index.php?p=post.incrementeLike&id=<?=$experience->id;?>' title="J'adore !"><span class='glyphicon glyphicon-heart grey' aria-hidden='true'></span><span class="badge"><?= $experience->nb_likes;?></span></a>
-						<a href='index.php?p=users.logout' title="Je veux y aller !" ><span class='glyphicon glyphicon-plane' aria-hidden='true'></span></a>
+							<a href='index.php?p=users.logout' title="Je veux y aller !" ><span class='glyphicon glyphicon-plane' aria-hidden='true'></span></a>
 					</h3>
 				</div>
-			</div>
+				</div>
+				<div class="panel-body">
+					<div class="col-sm-11">
+						<div class="row">
+							<div class="col-lg-6 col-sm-push-1 ">
+								<p><em> <?=$experience->description;?></em></p>	
+							</div>
+							<div class="col-lg-3 col-sm-push-1 alert-success">
+								&nbsp;<h4 align="center"><b>Les plus <span class="glyphicon glyphicon-ok"></span></b></h4>&nbsp;
+								&nbsp;<p><em>&bull; <?=$plus1;?></em></p>&nbsp;
+								&nbsp;<p><em>&bull; <?=$plus2;?></em></p>&nbsp;
+								&nbsp;<p><em>&bull; <?=$plus3;?></em></p>&nbsp;
+							</div>
+							<div class="col-lg-3 col-sm-push-1 alert-danger">
+								&nbsp;<h4 align="center"><b>Les moins <span class="glyphicon glyphicon-remove"></span></b></h4>&nbsp;
+								&nbsp;<p><em>&bull; <?=$moins1;?></em></p>&nbsp;
+								&nbsp;<p><em>&bull; <?=$moins2;?></em></p>&nbsp;
+								&nbsp;<p><em>&bull; <?=$moins3;?></em></p>&nbsp;	
+							</div>	
+						</div>		
+					</div>
+				</div>
 			</div>
 		<?php endforeach;?>
 	</div>
