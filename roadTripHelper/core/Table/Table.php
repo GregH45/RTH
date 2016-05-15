@@ -105,7 +105,7 @@ class Table{
 
 
 	public function query($statement,$attributes = null, $one = false){
-		die(var_dump(str_replace('Table', 'Entity', get_class($this))));
+
 		if($attributes){
 			return $this->db->prepare(
 					$statement,

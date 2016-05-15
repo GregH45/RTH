@@ -1,10 +1,10 @@
 <?php
 
 return array(
-	
+
 		"db_user" => "root",
-		"db_pass" => "",
+		"db_pass" => "root",
 		"db_host" => "localhost",
-		"db_name" => "blog"		
-		
+		"db_name" => "blog"
+
 );
