@@ -63,6 +63,7 @@ class UserTable extends Table{
 	}
 	
 	
+
 	public function newAccount($name, $lastname, $username, $email, $password){
 		
 		if($name=="" || $lastname=="" || $username=="" || $password=="" || $email == ""){
@@ -91,6 +92,37 @@ class UserTable extends Table{
 		}
 		
 	}
-	
+
+	public function showExperiences(){
+
+		$userId = $this->getUserId();
+
+		if($userId != false && $userId>0){
+			
+				$experiences = $this->query('SELECT *
+						FROM experience
+						LEFT JOIN user ON experience.id_user = user.id 
+						WHERE user.id = ?
+						ORDER BY experience.date DESC',[$userId], null, true);
+
+				return $experiences;	
+		}
+
+		return false;
+
+	}	
+
+	public function newExperience($titre, $description, $date, $plus1, $plus2, $plus3, $moins1, $moins2, $moins3){
+		
+		if($titre=="" || $description=="" || $date=="jj/mm/aaaa"){
+			return 1;
+		}
+				
+			$userId = $this->getUserId();
+
+			$this->query('INSERT INTO experience
+						VALUES ("","'.$userId.'","'.$titre.'","'.$description.'","0","'.$plus1.';'.$plus2.';'.$plus3.'","'.$moins1.';'.$moins2.';'.$moins3.'","false","'.$date.'")',null,false);		
+		return 0;
+	}	
 
 }

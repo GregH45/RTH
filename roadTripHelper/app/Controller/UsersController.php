@@ -87,7 +87,29 @@ class UsersController extends AppController{
 	}
 	
 	public function pagePerso(){
-		$this->render('user.pagePerso');
+
+		$experiences = $this->User->showExperiences();
+		$this->render('user.pagePerso', compact('experiences'));
+	}
+
+	public function newExperience(){
+		
+	$errors = 0;
+
+		if(!empty($_POST))
+		{
+			$errors = $this->User->newExperience($_POST['titre'], $_POST['description'], $_POST['date'], $_POST['plus1'], $_POST['plus2'], $_POST['plus3'], $_POST['moins1'], $_POST['moins2'], $_POST['moins3']);
+			
+			if($errors==0){
+				header('Location: index.php?p=users.pagePerso');
+			} else if($errors==1){
+				$errors = "Veuillez remplir tous les champs";
+			} 
+		}
+
+		$form = new BootstrapForm($_POST);
+		$this->render('user.newExperience', compact('form', 'errors'));	
+
 	}
 }
 	
