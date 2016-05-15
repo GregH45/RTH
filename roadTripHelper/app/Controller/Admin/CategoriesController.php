@@ -34,9 +34,9 @@ class CategoriesController extends AppController{
 					'titre' => $_POST['titre']
 			]);
 
-				return $this->index();			
+				return $this->index();
 		}
-		
+
 		$form = new  BootstrapForm($_POST);
 		$this->render('admin.categories.edit', compact('form'));
 
@@ -50,7 +50,7 @@ class CategoriesController extends AppController{
 			$result = $this->Categorie->delete($_POST['id']);
 
 			return $this->index();
-				
+
 		}
 
 	}
@@ -64,8 +64,8 @@ class CategoriesController extends AppController{
 					'titre' => $_POST['titre']
 			]);
 
-				return $this->index();		
-				
+				return $this->index();
+
 		}
 
 		$Categorie = $this->Categorie->find($_GET['id']);

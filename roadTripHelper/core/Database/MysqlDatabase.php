@@ -44,15 +44,7 @@ class MysqlDatabase extends Database{
 		){
 			return $req;die(var_dump("ooooooooooo"));
 		}
-<<<<<<< HEAD
 
-
-
-=======
-		//var_dump($statement);
-		///die(var_dump(strpos($statement, 'UPDATE')));
-
->>>>>>> ae24eef35b593269355d807c89122b98c8da6c34
 		if($class_name === null)
 		{
 			$req->setFetchMode(PDO::FETCH_OBJ);

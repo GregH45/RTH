@@ -24,6 +24,7 @@ class UserTable extends Table{
 		if($user){
 			if ($user[0]->password === sha1($password)){
 				$_SESSION['auth'] = $user[0]->id;
+				$this->isAdmin($username);
 				return true;
 			}
 		}

@@ -1,27 +1,29 @@
-<?php 
+<?php
 
 define('ROOT',dirname(__DIR__));
 
 require ROOT . '/app/App.php';
+
+ini_set('session.save_path',realpath(dirname('/var/lib/php5/')));
 
 App::load();
 
 
 
 if(isset($_GET['p'])){
-	
+
 	$page = $_GET['p'];
-	
+
 }else{
-	
+
 	$page = 'post.index';
 }
-	
+
 
 	$page = explode('.', $page);
 
-	
-	
+
+
 	if($page[0] == 'admin')
 	{
 		$controller = '\App\Controller\Admin\\' . ucfirst($page[1]) . 'Controller';
@@ -31,12 +33,12 @@ if(isset($_GET['p'])){
 		$controller = '\App\Controller\\' . ucfirst($page[0]) . 'Controller';
 		$action = $page[1];
 	}
-	
+
 
 	$controller = new $controller();
 
 	$controller->$action();
-	
-	
+
+
 ?>
 

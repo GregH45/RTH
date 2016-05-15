@@ -22,9 +22,9 @@ class UsersController extends AppController{
 
 		if(!empty($_POST))
 		{
-			if($this->User->login($_POST['username'], $_POST['password'])){
-
-				header('Location: index.php');
+			if($this->User->login($_POST['username'], $_POST['password']))
+			{
+					header('Location: index.php');
 			}
 			else{
 				$errors = true;
@@ -42,6 +42,7 @@ class UsersController extends AppController{
 		$userName = $this->User->getUsername();
 			if($userName != false){
 				$this->User->logout();
+				$_SESSION["admin"] = 0;
 			}
 		header('Location: index.php');
 	}

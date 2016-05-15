@@ -18,7 +18,7 @@
 	<body>
 		<div class="container">
 
-			<!-- Navbar --> 
+			<!-- Navbar -->
 			<nav class="navbar navbar-default">
 				<div class="container-fluid">
 			  		<div class="navbar-header">
@@ -35,6 +35,9 @@
 			            <ul class="nav navbar-nav">
 			    			<li><a href="index.php?p=post.roadTrip">Road Trip</a></li>
 			    			<li><a href="index.php?p=post.experiences">Expériences</a></li>
+			    			<?php if ($_SESSION["admin"] == 1)  echo("
+			    				<li><a href='index.php?p=admin.post.index'>Administration</a></li>");
+			    				?>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 			              	<li><a href="index.php?p=users.login"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?=App::getUsername()?></a></li>
@@ -63,11 +66,11 @@
 
     	<!-- Bootstrap core JavaScript
    		================================================== -->
-    	<!-- Placed at the end of the document so the pages load faster -->    
+    	<!-- Placed at the end of the document so the pages load faster -->
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     	<script src="js/bootstrap.js"></script>
 	</body>
 
-	
+
 </html>
 

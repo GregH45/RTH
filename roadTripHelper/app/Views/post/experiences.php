@@ -2,9 +2,6 @@
 <div style='padding-left:10px'  class="col-sm-1">
 <!-- PROPOSITION 1 FILTER -->
 
-<<<<<<< HEAD
-	
-=======
 	<div class="dropdown">
 	<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
     Filtrer
@@ -28,9 +25,8 @@
 				<?php endforeach?>
 		</ul>
 	</div>
->>>>>>> ff178980e377bcee8d7700b9a3e79fa7af2eaf1f
 
-	
+
 </br></br>
 
 <!-- PROPOSITION 2 FILTER -->
@@ -53,7 +49,7 @@
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-  
+
     	<?php  foreach ($countries as $country):  ?>
 			<li><a href="<?= $country->url;?>"><?= $country->Name ?></a></li>
 		<?php endforeach?>
@@ -82,14 +78,14 @@
 	<div style='padding-left:40px' class="col-sm-11">
 
 		<?php foreach  ($experiences as $experience): ?>
-			
+
 			<div class="panel panel-default">
 			<div class="panel-heading">
 				<h2 class="panel-title"><a href="<?= $experience->url?>"><?=$experience->titre;?></a></h2>
 			</div>
 			<div class="panel-body">
 				<div class="col-sm-10">
-							
+
 					<p><?= $experience->description;?></p>
 					<p>Les plus : <?= $experience->plus;?></p>
 					<p>Les moins : <?= $experience->moins;?></p>
@@ -99,15 +95,22 @@
 					<h3 align="right">
 						<a href='http://localhost/RTH/roadTripHelper/public/index.php?p=post.incrementeLike&id=<?=$experience->id;?>' title="J'adore !"><span class='glyphicon glyphicon-heart grey' aria-hidden='true'></span><span class="badge"><?= $experience->nb_likes;?></span></a>
 						<a href='index.php?p=users.logout' title="Je veux y aller !" ><span class='glyphicon glyphicon-plane' aria-hidden='true'></span></a>
+
+
+						<?php if ($_SESSION["admin"] == 1)  echo("
+						<form action = '?p=admin.post.delete' method = 'post' style= 'display : inline;'>
+							<input type= 'hidden' name ='id' value = '<?= $post->id;?>'>
+							<button type= 'submit' class ='btn btn-danger'>Supprimer</button>
+						</form>");?>
 					</h3>
 				</div>
 			</div>
 			</div>
 		<?php endforeach;?>
 	</div>
-					
-		
 
-	
+
+
+
 </div>
 

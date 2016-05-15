@@ -2,8 +2,8 @@
 
 <p>
 
-	<a href="?p=admin.post.add" class = "btn btn-success">Ajouter</a>
-
+	<!--<a href="?p=admin.post.add" class = "btn btn-success">Ajouter</a>
+	-->
 </p>
 
 
@@ -21,14 +21,23 @@
 		<td><?= $post->id?></td>
 		<td><?= $post->titre?></td>
 		<td>
-			<a class = "btn btn-primary" href="?p=admin.post.edit&id=<?= $post->id;?>">Editer</a>
+			<a class = "btn btn-primary" href="?p=post.show&id=<?= $post->id;?>">Consulter</a>
+
+			<form action = "?p=admin.post.accepter" method = "post" style= "display : inline;">
+				<input type= "hidden" name ="id" value = "<?= $post->id;?>">
+				<button type= "submit" class ="btn btn-success">Accepter</button>
+			</form>
+
 			<form action = "?p=admin.post.delete" method = "post" style= "display : inline;">
 				<input type= "hidden" name ="id" value = "<?= $post->id;?>">
 				<button type= "submit" class ="btn btn-danger">Supprimer</button>
 			</form>
+
+
+
 		</td>
 	</tr>
-	
+
 	<?php endforeach?>
 	</tbody>
 </table>
