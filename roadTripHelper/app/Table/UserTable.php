@@ -81,7 +81,7 @@ class UserTable extends Table{
 		} else if (filter_var($email, FILTER_VALIDATE_EMAIL)!== false) {
 
 			$this->query("INSERT INTO user
-							  VALUES ('','".$username."','".$criptedPassword."','".$name."','".$lastname."','".$email."')",null,false);
+							  VALUES ('','".$username."','".$criptedPassword."','".$name."','".$lastname."','".$email.",0')",null,false);
 
 			if($this->login($username, $password)){
 				return 0;
@@ -107,5 +107,36 @@ class UserTable extends Table{
 		return false;
 	}
 
+	public function showExperiences(){
+
+		$userId = $this->getUserId();
+
+		if($userId != false && $userId>0){
+
+				$experiences = $this->query('SELECT *
+						FROM experience
+						LEFT JOIN user ON experience.id_user = user.id
+						WHERE user.id = ?
+						ORDER BY experience.date DESC',[$userId], null, true);
+
+				return $experiences;
+		}
+
+		return false;
+
+	}
+
+	public function newExperience($titre, $description, $date, $plus1, $plus2, $plus3, $moins1, $moins2, $moins3){
+
+		if($titre=="" || $description=="" || $date=="jj/mm/aaaa"){
+			return 1;
+		}
+
+			$userId = $this->getUserId();
+
+			$this->query('INSERT INTO experience
+						VALUES ("","'.$userId.'","'.$titre.'","'.$description.'","0","'.$plus1.';'.$plus2.';'.$plus3.'","'.$moins1.';'.$moins2.';'.$moins3.'","false","'.$date.'")',null,false);
+		return 0;
+	}
 
 }

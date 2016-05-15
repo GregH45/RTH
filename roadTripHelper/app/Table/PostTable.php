@@ -90,4 +90,5 @@ class PostTable extends Table{
 
 	}
 
+
 }

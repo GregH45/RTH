@@ -21,9 +21,14 @@ class PostController extends AppController{
 
 	public function index(){
 
-		$post = $this->Post->getNonValideExp();
+		if ($_SESSION["admin"] == 1)
+		{
+			$post = $this->Post->getNonValideExp();
 
-		$this->render('admin.post.index', compact('post'));
+			$this->render('admin.post.index', compact('post'));
+		}
+		else
+			header('Location: index.php');
 
 	}
 
