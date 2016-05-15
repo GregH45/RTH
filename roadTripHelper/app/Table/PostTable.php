@@ -6,10 +6,10 @@ use \Core\Table\Table;
 class PostTable extends Table{
 	
 	
-	protected $table = 'article';
+	protected $table = 'experience';
 	
 	/**
-	 * Récupère els derniers articles
+	 * Récupère les derniers articles
 	 * @return array
 	 */
 	
@@ -55,6 +55,23 @@ class PostTable extends Table{
 				LEFT JOIN categorie	ON categorie_id = categorie.id
 				WHERE article.id = ?
 				", [$id],true);
+	}
+
+	public function addLike($id) {
+		$nb = $this->getNbLikes($id) +1;
+		return $this->query("UPDATE experience
+				SET nb_likes = ?
+				WHERE id = ?
+				", [$nb, $id],true);
+	}
+
+	public function getNbLikes($id) {
+		$datas = $this->query("
+				SELECT nb_likes
+				FROM experience  
+				WHERE id = ?
+				", [$id],true);
+		return $datas->nb_likes;
 	}
 
 }

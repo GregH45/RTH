@@ -22,7 +22,6 @@ class MysqlDatabase extends Database{
 		$pdo = new PDO('mysql:dbname=roadtriphelper;host=localhost','root','root');
 
 		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
 		$this->pdo = $pdo;
 
 		return $pdo;
@@ -43,11 +42,17 @@ class MysqlDatabase extends Database{
 				strpos($statement, 'DELETE') === 0 ||
 				strpos($statement, 'UPDATE') === 0
 		){
-			return $req;
+			return $req;die(var_dump("ooooooooooo"));
 		}
+<<<<<<< HEAD
 
 
 
+=======
+		//var_dump($statement);
+		///die(var_dump(strpos($statement, 'UPDATE')));
+
+>>>>>>> ae24eef35b593269355d807c89122b98c8da6c34
 		if($class_name === null)
 		{
 			$req->setFetchMode(PDO::FETCH_OBJ);
