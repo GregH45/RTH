@@ -75,7 +75,7 @@
 					<h3 align="right" style='padding-right:20px' class="panel-title">
 						<a href='http://localhost/RTH/roadTripHelper/public/index.php?p=post.incrementeLike&id=<?=$experience->id;?>' title="J'adore !"><span class='glyphicon glyphicon-heart grey' aria-hidden='true'></span><span class="badge"><?= $experience->nb_likes;?></span></a>
 							<a href='index.php?p=users.logout' title="Je veux y aller !" ><span class='glyphicon glyphicon-plane' aria-hidden='true'></span></a>
-							<?php if ($_SESSION["admin"] == 1)  echo("
+							<?php if(isset($_SESSION["admin"]) && ($_SESSION["admin"] == 1))  echo("
 						<form action = '?p=admin.post.delete' method = 'post' style= 'display : inline;'>
 							<input type= 'hidden' name ='id' value = '<?= $post->id;?>'>
 							<button type= 'submit' class ='btn btn-danger'>Supprimer</button>
