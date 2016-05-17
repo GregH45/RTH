@@ -18,7 +18,7 @@
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
     	<?php  foreach ($continents as $continent):  ?>
-			<li><a href="http://localhost/WEB_RTH/roadTripHelper/public/index.php?p=post.experiences&id=<?= $continent->Name ?>"><?= $continent->Name ?></a></li>
+			<li><a href="<?= $continent->url;?>"><?= $continent->Name ?></a></li>
 		<?php endforeach?>
   </ul>
 </div>
@@ -89,6 +89,11 @@
 						<div class="row">
 							<div class="col-lg-6 col-sm-push-1 ">
 								<p><em> <?=$experience->description;?></em></p>
+								<p><em> Ville(s) parcourue(s) : </em>
+									 <?php  foreach ($villes_parcourues as $ville_parcourue):  ?>
+										<?=$ville_parcourue->nom_ville;?>
+									<?php endforeach?>
+								</p>
 							</div>
 							<div class="col-lg-3 col-sm-push-1 alert-success">
 								&nbsp;<h4 align="center"><b>Les plus <span class="glyphicon glyphicon-ok"></span></b></h4>&nbsp;

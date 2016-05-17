@@ -23,7 +23,7 @@ class PostController extends AppController{
 
 		if ($_SESSION["admin"] == 1)
 		{
-			$post = $this->Post->getNonValideExp();
+			$post = $this->Post->all();
 
 			$this->render('admin.post.index', compact('post'));
 		}

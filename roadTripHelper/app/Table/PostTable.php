@@ -90,5 +90,16 @@ class PostTable extends Table{
 
 	}
 
+	public function getExperiencesValid(){
+		return $this->query("SELECT *
+						FROM experience
+						WHERE accepte = 1");
+	}
+
+	public function getVillesParcourues() {
+		return $this->query("SELECT nom_ville
+						FROM villes_parcourues");
+	}
+
 
 }

@@ -5,6 +5,7 @@ use \Core\Table\Table;
 
 class CategorieTable extends Table{
 
-			protected $table = "categorie";
+	protected $table = "categorie";
 
+	
 }

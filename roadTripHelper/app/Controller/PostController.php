@@ -78,9 +78,11 @@ class PostController extends AppController{
 			$currentCity = 'Villes';
 		}
 
-		$experiences = $this->Post->all();
-
-		$this->render('post.experiences',compact('categories', 'continents', 'countries', 'cities', 'experiences', 'currentContinent', 'currentCountry', 'currentCity'));
+		//$experiences = $this->Post->all();
+		$experiences = $this->Post->getExperiencesValid();
+		$villes_parcourues = $this->Post->getVillesParcourues();
+		$this->render('post.experiences',compact('categories', 'continents', 'countries', 'cities', 'experiences', 'currentContinent', 
+			'currentCountry', 'currentCity', 'villes_parcourues'));
 
 	}
 

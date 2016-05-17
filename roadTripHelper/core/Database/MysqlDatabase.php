@@ -10,7 +10,7 @@ class MysqlDatabase extends Database{
 	private $db_host;
 	private $pdo;
 
-	public function __construct($db_name,$db_user = 'root',$db_pass = 'root', $db_host = 'localhost'){
+	public function __construct($db_name,$db_user = '',$db_pass = '', $db_host = 'localhost'){
 		$this->db_name = $db_name;
 		$this->db_user = $db_user;
 		$this->db_pass = $db_pass;
@@ -19,7 +19,8 @@ class MysqlDatabase extends Database{
 
 	private function getPDO(){
 
-		$pdo = new PDO('mysql:dbname=roadtriphelper;host=localhost','root','root');
+		//$pdo = new PDO('mysql:dbname=roadtriphelper;host=localhost','root','root');
+		$pdo = new PDO('mysql:dbname=roadtriphelper;host=localhost;charset=utf8','root','');
 
 		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$this->pdo = $pdo;
