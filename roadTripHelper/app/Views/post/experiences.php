@@ -1,13 +1,5 @@
 <div class="col-sm-12">
 <div style='padding-left:10px'  class="col-sm-1">
-<!-- PROPOSITION 1 FILTER -->
-
-
-
-
-</br></br>
-
-<!-- PROPOSITION 2 FILTER -->
 
 <div class="dropdown">
   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -18,7 +10,7 @@
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
     	<?php  foreach ($continents as $continent):  ?>
-			<li><a href="http://localhost/WEB_RTH/roadTripHelper/public/index.php?p=post.experiences&id=<?= $continent->Name ?>"><?= $continent->Name ?></a></li>
+			<li><a href="<?= $continent->url;?>"><?= $continent->Name ?></a></li>
 		<?php endforeach?>
   </ul>
 </div>
@@ -62,7 +54,7 @@
 	<div style='padding-left:40px' class="col-sm-11">
 
 
-		<?php foreach  ($experiences as $experience):
+		<?php foreach ($experiences as $experience):
 			list($plus1, $plus2, $plus3) = split(";", $experience->plus);
 			list($moins1, $moins2, $moins3) = split(";", $experience->moins); ?>
 
@@ -75,7 +67,9 @@
 					<h3 align="right" style='padding-right:20px' class="panel-title">
 						<a href='http://localhost/RTH/roadTripHelper/public/index.php?p=post.incrementeLike&id=<?=$experience->id;?>' title="J'adore !"><span class='glyphicon glyphicon-heart grey' aria-hidden='true'></span><span class="badge"><?= $experience->nb_likes;?></span></a>
 							<a href='index.php?p=users.logout' title="Je veux y aller !" ><span class='glyphicon glyphicon-plane' aria-hidden='true'></span></a>
-							<?php if(isset($_SESSION["admin"]) && ($_SESSION["admin"] == 1))  echo("
+							 
+							 <a target="_blank" title="Facebook" href="https://www.facebook.com/sharer.php?u=google.fr&t=RoadTripHelper" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"><img src="img/facebook.png" alt="Facebook" /></a>
+							 <?php if(isset($_SESSION["admin"]) && ($_SESSION["admin"] == 1))  echo("
 						<form action = '?p=admin.post.delete' method = 'post' style= 'display : inline;'>
 							<input type= 'hidden' name ='id' value = '<?= $post->id;?>'>
 							<button type= 'submit' class ='btn btn-danger'>Supprimer</button>
@@ -89,6 +83,7 @@
 						<div class="row">
 							<div class="col-lg-6 col-sm-push-1 ">
 								<p><em> <?=$experience->description;?></em></p>
+								
 							</div>
 							<div class="col-lg-3 col-sm-push-1 alert-success">
 								&nbsp;<h4 align="center"><b>Les plus <span class="glyphicon glyphicon-ok"></span></b></h4>&nbsp;
@@ -107,6 +102,9 @@
 				</div>
 			</div>
 		<?php endforeach;?>
+		<?php if(sizeof($experiences) == 0):?>
+			<p><em>Aucune expérience ne correspond à votre recherche...</em></p>
+		<?php endif ?>
 	</div>
 
 

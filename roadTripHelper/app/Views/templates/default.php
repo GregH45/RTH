@@ -35,7 +35,7 @@
 			            <ul class="nav navbar-nav">
 			    			<li><a href="index.php?p=post.roadTrip">Road Trip</a></li>
 			    			<li><a href="index.php?p=post.experiences">Expériences</a></li>
-			    			<?php if ($_SESSION["admin"] == 1)  echo("
+			    			<?php if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1)  echo("
 			    				<li><a href='index.php?p=admin.post.index'>Administration</a></li>");
 			    				?>
 						</ul>

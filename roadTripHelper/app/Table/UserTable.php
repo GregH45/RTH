@@ -117,7 +117,7 @@ class UserTable extends Table{
 						FROM experience
 						LEFT JOIN user ON experience.id_user = user.id
 						WHERE user.id = ?
-						ORDER BY experience.date DESC',[$userId], null, true);
+						ORDER BY experience.date_debut DESC',[$userId], null, true);
 
 				return $experiences;
 		}
@@ -126,16 +126,16 @@ class UserTable extends Table{
 
 	}
 
-	public function newExperience($titre, $description, $date, $plus1, $plus2, $plus3, $moins1, $moins2, $moins3){
+	public function newExperience($titre, $description, $date_debut, $date_fin, $plus1, $plus2, $plus3, $moins1, $moins2, $moins3){
 
-		if($titre=="" || $description=="" || $date=="jj/mm/aaaa"){
+		if($titre=="" || $description=="" || $date_debut=="jj/mm/aaaa" || $date_fin=="jj/mm/aaaa"){
 			return 1;
 		}
 
 			$userId = $this->getUserId();
 
 			$this->query('INSERT INTO experience
-						VALUES ("","'.$userId.'","'.$titre.'","'.$description.'","0","'.$plus1.';'.$plus2.';'.$plus3.'","'.$moins1.';'.$moins2.';'.$moins3.'","false","'.$date.'")',null,false);
+						VALUES ("","'.$userId.'","'.$titre.'","'.$description.'","0","'.$plus1.';'.$plus2.';'.$plus3.'","'.$moins1.';'.$moins2.';'.$moins3.'","false","'.$date_debut.'","'.$date_fin.'")',null,false);
 		return 0;
 	}
 

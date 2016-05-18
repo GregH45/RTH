@@ -13,7 +13,8 @@ if($errors!="0"){
 				<div class="col-lg-4 col-sm-push-1">
 					<?php echo $form->input('titre','Titre');?>
 					<?php echo $form->input('description','Description', ['type' => 'textarea']);?>	
-					<?php echo $form->input('date','Date du voyage', ['type' => 'date']);?>
+					<?php echo $form->input('date_debut','Date de début du voyage', ['type' => 'date']);?>
+					<?php echo $form->input('date_fin','Date de fin du voyage', ['type' => 'date']);?>
 				</div>
 				<div class="col-lg-3 col-sm-push-1 ">
 					<?php echo $form->input('plus1','Les plus');?>

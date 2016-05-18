@@ -37,18 +37,22 @@ class PostController extends AppController{
 
 		$continents = $this->Continent->all();
 		$categories = $this->Categorie->all();
-
+		// Continent sélectionné
 		if(isset($_GET['id'])) {
-
 			$countries = $this->Country->getCountriesByContinent($_GET['id']);
-			//$countries = $this->Country->all();
 			$currentContinent = $_GET['id'];
+			// A TESTER
+			//si un filtre est sélectionné
+			//$experiences = $this->Post->getExperiencesValidByContinent($_GET['id'], $_GET['filtre']);
+			//sinon
+			$experiences = $this->Post->getExperiencesValidByContinent($_GET['id']);
 		}
 		else {
 			$countries = $this->Country->all();
-			$currentContinent = 'Continent';
+			$currentContinent = 'Continent';	
+			$experiences = $this->Post->getExperiencesValid();
 		}
-
+		// Pays sélectionné
 		if(isset($_GET['code'])) {
 			$cities = $this->City->getCitiesByCountry($_GET['code']);
 			$currentCountry = $this->Country->getNameByCode($_GET['code']);
@@ -56,14 +60,20 @@ class PostController extends AppController{
 			$countries = $this->Country->getCountriesByContinent($currentContinent[0]->Name);
 			$currentCountry = $currentCountry[0]->Name;
 			$currentContinent = $currentContinent[0]->Name;
+
+			// A TESTER
+			//si un filtre est sélectionné
+			//$experiences = $this->Post->getExperiencesValidByCountry($_GET['code'], $_GET['filtre']);
+			//sinon
+			$experiences = $this->Post->getExperiencesValidByCountry($_GET['code']);
 		}
 		else {
 			$currentCountry = 'Pays';
 			$cities = $this->City->all();
 		}
 
+		// Ville sélectionnée
 		if(isset($_GET['id2'])) {
-
 			$currentCity = $_GET['id2'];
 			$currentCountry = $this->City->getCodePaysByCity($_GET['id2']);
 			$cities = $this->City->getCitiesByCountry($currentCountry[0]->Country);
@@ -73,14 +83,18 @@ class PostController extends AppController{
 			$currentContinent = $currentContinent[0]->Name;
 			$countries = $this->Country->getCountriesByContinent($currentContinent);
 
+			// A TESTER
+			//si un filtre est sélectionné
+			//$experiences = $this->Post->getExperiencesValidByCity($_GET['id2'], $_GET['filtre']);
+			//sinon
+			$experiences = $this->Post->getExperiencesValidByCity($_GET['id2'], '');
 
 		}else{
 			$currentCity = 'Villes';
 		}
 
-		$experiences = $this->Post->all();
-
-		$this->render('post.experiences',compact('categories', 'continents', 'countries', 'cities', 'experiences', 'currentContinent', 'currentCountry', 'currentCity'));
+		$this->render('post.experiences',compact('categories', 'continents', 'countries', 'cities', 'experiences', 'currentContinent', 
+			'currentCountry', 'currentCity'));
 
 	}
 
@@ -105,9 +119,12 @@ class PostController extends AppController{
 
 	public function show () {
 
+		$villes_parcourues = $this->Post->getVillesParcourues($_GET['id']);
 
 		$experience = $this->Post->find($_GET['id']);
-		$this->render('post.show', compact('experience'));
+		$date_debut = $this->Post->getDateFormat($experience->date_debut);
+		$date_fin = $this->Post->getDateFormat($experience->date_fin);
+		$this->render('post.show', compact('experience', 'villes_parcourues', 'date_debut', 'date_fin'));
 
 	}
 

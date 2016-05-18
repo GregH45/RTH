@@ -89,8 +89,10 @@ class UsersController extends AppController{
 	}
 
 	public function pagePerso(){
-
+		//$date_debut = $this->Post->getDateFormat($experience->date_debut);
+		//$date_fin = $this->Post->getDateFormat($experience->date_fin);
 		$experiences = $this->User->showExperiences();
+		//$this->render('user.pagePerso', compact('experiences', 'date_debut', 'date_fin'));
 		$this->render('user.pagePerso', compact('experiences'));
 	}
 
@@ -100,7 +102,7 @@ class UsersController extends AppController{
 
 		if(!empty($_POST))
 		{
-			$errors = $this->User->newExperience($_POST['titre'], $_POST['description'], $_POST['date'], $_POST['plus1'], $_POST['plus2'], $_POST['plus3'], $_POST['moins1'], $_POST['moins2'], $_POST['moins3']);
+			$errors = $this->User->newExperience($_POST['titre'], $_POST['description'], $_POST['date_debut'], $_POST['date_fin'], $_POST['plus1'], $_POST['plus2'], $_POST['plus3'], $_POST['moins1'], $_POST['moins2'], $_POST['moins3']);
 			
 			if($errors==0){
 				header('Location: index.php?p=users.pagePerso');
