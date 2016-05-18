@@ -71,7 +71,7 @@
 							 <a target="_blank" title="Facebook" href="https://www.facebook.com/sharer.php?u=google.fr&t=RoadTripHelper" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"><img src="img/facebook.png" alt="Facebook" /></a>
 							 <?php if(isset($_SESSION["admin"]) && ($_SESSION["admin"] == 1))  echo("
 						<form action = '?p=admin.post.delete' method = 'post' style= 'display : inline;'>
-							<input type= 'hidden' name ='id' value = '<?= $post->id;?>'>
+							<input type= 'hidden' name ='id' value = '<?= $experience->id;?>'>
 							<button type= 'submit' class ='btn btn-danger'>Supprimer</button>
 						</form>");?>
 

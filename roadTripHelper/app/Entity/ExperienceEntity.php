@@ -4,7 +4,7 @@ namespace App\Entity;
 use \Core\Entity\Entity;
 
 
-class PostEntity extends Entity{
+class ExperienceEntity extends Entity{
 	
 	
 	public function getUrl(){
