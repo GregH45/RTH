@@ -130,7 +130,7 @@ class PostController extends AppController{
 
 	public function incrementeLike(){
 		$this->Post->addLike($_GET['id']);
-		header('location: http://localhost/RTH/roadTripHelper/public/index.php?p=post.experiences');
+		header('location: ?p=post.experiences');
 	}
 
 
