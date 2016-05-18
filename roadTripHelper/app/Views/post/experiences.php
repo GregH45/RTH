@@ -83,7 +83,6 @@
 						<div class="row">
 							<div class="col-lg-6 col-sm-push-1 ">
 								<p><em> <?=$experience->description;?></em></p>
-								
 							</div>
 							<div class="col-lg-3 col-sm-push-1 alert-success">
 								&nbsp;<h4 align="center"><b>Les plus <span class="glyphicon glyphicon-ok"></span></b></h4>&nbsp;
