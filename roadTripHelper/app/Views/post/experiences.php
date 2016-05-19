@@ -1,5 +1,25 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+  Informations générales sur le pays : <br />
+  <li>Capitale : <?= $country[0]->Capital ?></li>
+  <li>Superficie : <?= $country[0]->Area ?> m²</li>
+  <li>Population : <?= $country[0]->Population ?> habitants</li>
+  	Langue(s) parlée(s) :
+    <?php  foreach ($languages as $language):  ?>
+		<?= $language->Name ?>,
+	<?php endforeach?><br/>
+	Politique du pays  :
+    <?php  foreach ($politics as $politic):  ?>
+		<?= $politic->Government ?>,
+	<?php endforeach?>
+  </div>
+</div>
+
+
 <div class="col-sm-12">
 <div style='padding-left:10px'  class="col-sm-1">
+
+
 
 <div class="dropdown">
   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -45,9 +65,26 @@
 </div>
 </div>
 
-<div style="padding-left:50px" class="btn-group" role="group">
-  <button type="button" class="btn btn-default">Trier par date</button>
-  <button type="button" class="btn btn-default">Trier par like</button>
+
+<?php 
+if($currentContinent == 'Continent' && $currentCountry == 'Pays' && $currentCity == 'Villes') {
+	$lien = '';
+} 
+if($currentContinent != 'Continent') {
+	$lien = 'id='.$currentContinent.'&';
+} 
+if($currentCountry != 'Pays') {
+	$lien = 'code='.$currentCountryCode.'&';
+}
+if($currentCity != 'Villes') {
+	$lien = 'id2='.$currentCity.'&';
+}
+?>
+
+
+<div style="padding-left:100px" class="btn-group" role="group">
+  <a href="?p=post.experiences&<?=$lien;?>filter=date"><button type="button" class="btn btn-default">Trier par date</button></a>
+  <a href="?p=post.experiences&<?=$lien;?>filter=nb_likes"><button type="button" class="btn btn-default">Trier par like</button></a>
 </div>
 </br></br>
 </br>
@@ -82,6 +119,7 @@
 					<div class="col-sm-11">
 						<div class="row">
 							<div class="col-lg-6 col-sm-push-1 ">
+								<p><em> Date du voyage : Du  <?=$experience->date_debut;?> au <?=$experience->date_debut;?></em></p>
 								<p><em> <?=$experience->description;?></em></p>
 							</div>
 							<div class="col-lg-3 col-sm-push-1 alert-success">

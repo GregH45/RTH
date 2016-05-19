@@ -11,13 +11,8 @@ class ExperienceEntity extends Entity{
 		return 'index.php?p=post.show&id='.$this->id;
 	}
 	
-	public function getExtrait()
-	{
-		$html = '<p>'.substr($this->contenu, 0, 100).'...</p>';
-		$html .= '<p><a href="'.$this->getURL().'">voir la suite</a></p>';
-		return $html;
+	public function getUrl2() {
+		return 'index.php?p=post.show&filter=date';		
 	}
-
-	
 	
 }

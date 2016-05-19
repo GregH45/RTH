@@ -28,11 +28,11 @@
 					<div class="col-sm-11">
 						<div class="row">
 							<div class="col-lg-6 col-sm-push-1 ">
-								<p><em> Date du voyage : Du  <?=$date_debut;?> au <?=$date_fin;?></em></p>
+								<p><em> Date du voyage : Du  <?=$experience->date_debut;?> au <?=$experience->date_debut;?></em></p>
 								<p><em> <?=$experience->description;?></em></p>
 								<p><em> Parcours : </em><br />
 									 <?php  foreach ($villes_parcourues as $ville_parcourue):  ?>
-									 	<li><?=$ville_parcourue->nom_continent . "-" . $ville_parcourue->code_pays ."-". $ville_parcourue->nom_ville ;?></li>	
+									 	<li><?=$ville_parcourue->nom_continent . "-" . $ville_parcourue->nom_pays ."-". $ville_parcourue->nom_ville ;?></li>	
 									<?php endforeach?>
 								</p>
 							</div>
