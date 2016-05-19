@@ -35,7 +35,7 @@ class ExperienceTable extends Table{
 	{
 		$exps = $this->query("SELECT id,titre, description
 								FROM experience
-								WHERE accepte =0");
+								WHERE accepte = 0");
 		return $exps;
 	}
 
@@ -97,7 +97,7 @@ class ExperienceTable extends Table{
 				WHERE id IN(
 					SELECT id_exp 
 					FROM villes_parcourues
-					WHERE code_pays = ? ) 
+					WHERE nom_pays = ? ) 
 				ORDER BY nb_likes DESC ", [$country]);
 		}
 		else {
@@ -107,7 +107,7 @@ class ExperienceTable extends Table{
 				WHERE id IN(
 					SELECT id_exp 
 					FROM villes_parcourues
-					WHERE code_pays = ? ) 
+					WHERE nom_pays = ? ) 
 				ORDER BY date_debut DESC ", [$country]);	
 			}
 			else {
@@ -116,7 +116,7 @@ class ExperienceTable extends Table{
 				WHERE id IN(
 					SELECT id_exp 
 					FROM villes_parcourues
-					WHERE code_pays = ? )", [$country]);	
+					WHERE nom_pays = ? )", [$country]);	
 			}
 		}	
 		return $res;	
@@ -154,11 +154,6 @@ class ExperienceTable extends Table{
 		}
 		return $res;
 		
-	}
-
-	function getDateFormat($date) {
-		$newDate = date("d/m/Y", strtotime($date));
-		return $newDate;
-	}
+	}	
 
 }

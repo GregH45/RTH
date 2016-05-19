@@ -21,6 +21,7 @@
 							<div class="col-sm-11">
 								<div class="row">
 									<div class="col-lg-6 col-sm-push-1 ">
+										<p><em> Date du voyage : Du  <?=$experience->date_debut;?> au <?=$experience->date_debut;?></em></p>
 										<p><em> <?=$experience->description;?></em></p>
 									</div>
 									<div class="col-lg-3 col-sm-push-1 alert-success">

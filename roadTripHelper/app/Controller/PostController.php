@@ -63,8 +63,7 @@ class PostController extends AppController{
 			//si un filtre est sélectionné
 			//$experiences = $this->Experience->getExperiencesValidByCountry($_GET['code'], $_GET['filtre']);
 			//sinon
-			$experiences = $this->Experience
-			->getExperiencesValidByCountry($_GET['code']);
+			$experiences = $this->Experience->getExperiencesValidByCountry($currentCountry);
 		}
 		else {
 			$currentCountry = 'Pays';
@@ -103,9 +102,7 @@ class PostController extends AppController{
 		$villes_parcourues = $this->Experience->getVillesParcourues($_GET['id']);
 
 		$experience = $this->Experience->find($_GET['id']);
-		$date_debut = $this->Experience->getDateFormat($experience->date_debut);
-		$date_fin = $this->Experience->getDateFormat($experience->date_fin);
-		$this->render('post.show', compact('experience', 'villes_parcourues', 'date_debut', 'date_fin'));
+		$this->render('post.show', compact('experience', 'villes_parcourues'));
 
 	}
 
