@@ -86,14 +86,15 @@ if($currentCity != 'Villes') {
 
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<div class="row">
-			<h3 style='padding-left:20px' align="left" class="panel-title">
-				<a href="<?= $experience->url?>"><?=$experience->titre;?></a>
-			</h3>
-			<h3 align="right" style='padding-right:20px' class="panel-title">
+			<h3 class="panel-title">
+			<div class="row">
+			<div class="col-md-8">
+				<strong><a class="text-default" href="<?= $experience->url?>"><?=$experience->titre;?></a></strong>
+			</div>
+			<div class="col-md-4 text-right">
 				<a href='?p=post.incrementeLike&id=<?=$experience->id;?>' title="J'adore !">
-					<span class='glyphicon glyphicon-heart grey' aria-hidden='true'></span><span class="badge"><?= $experience->nb_likes;?></span></a>
-				<a href='index.php?p=users.logout' title="Je veux y aller !" ><span class='glyphicon glyphicon-plane' aria-hidden='true'></span></a>
+					<span class='glyphicon glyphicon-heart grey text-default' aria-hidden='true'></span> <span class="badge"><?= $experience->nb_likes;?></span></a>
+				<a href='index.php?p=users.logout' title="Je veux y aller !" ><span class='glyphicon glyphicon-plane text-default' aria-hidden='true'></span></a>
 				<a target="_blank" title="Facebook" href="https://www.facebook.com/sharer.php?u=google.fr&t=RoadTripHelper" rel="nofollow" 
 					onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;">
 					<img src="img/facebook.png" alt="Facebook" /></a>
@@ -102,30 +103,34 @@ if($currentCity != 'Villes') {
 							<input type= 'hidden' name ='id' value = '<?= $experience->id;?>'>
 							<button type= 'submit' class ='btn btn-danger'>Supprimer</button>
 						</form>");?>
+					</div>
+				</div>
 			</h3>
 		</div>
-	</div>
 	<div class="panel-body">
-		<div class="col-sm-11">
-			<div class="row">
-				<div class="col-lg-6 col-sm-push-1 ">
-					<p><em> Date du voyage : Du  <?=$experience->date_debut;?> au <?=$experience->date_debut;?></em></p>
-					<p><em> <?=$experience->description;?></em></p>
-				</div>
-				<div class="col-lg-3 col-sm-push-1 alert-success">
+		<div class="row">
+			<div class="col-md-6">
+				<p><strong>Date du voyage :</strong>  Du  <?=$experience->date_debut;?> au <?=$experience->date_debut;?></p>
+				<p><?=$experience->description;?></p>
+			
+			</div>			
+			<div class="col-md-6">
+				<div class="col-lg-5 col-sm-push-1 alert-success">
 					&nbsp;<h4 align="center"><b>Les plus <span class="glyphicon glyphicon-ok"></span></b></h4>&nbsp;
 					<ul>
 						<li><?=$plus1;?></li>
 						<li><?=$plus2;?></li>
 						<li><?=$plus3;?></li>
+						<br />
 					</ul>
 				</div>
-				<div class="col-lg-3 col-sm-push-1 alert-danger">
+				<div class="col-lg-5 col-sm-push-1 alert-danger">
 					&nbsp;<h4 align="center"><b>Les moins <span class="glyphicon glyphicon-remove"></span></b></h4>&nbsp;
 					<ul>
 						<li><?=$moins1;?></li>
 						<li><?=$moins2;?></li>
 						<li><?=$moins3;?></li>
+						<br />
 					</ul>								
 				</div>
 			</div>
