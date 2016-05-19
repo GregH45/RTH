@@ -68,7 +68,6 @@ class PostController extends AppController{
 			else {
 				$experiences = $this->Experience->getExperiencesValidByCountry($currentCountry);
 			}
-			
 		}
 		else {
 			$currentCountry = 'Pays';

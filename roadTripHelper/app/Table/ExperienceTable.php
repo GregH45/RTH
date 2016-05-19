@@ -172,5 +172,4 @@ class ExperienceTable extends Table{
 		}
 		return $res;	
 	}
-
 }
