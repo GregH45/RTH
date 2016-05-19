@@ -1,7 +1,4 @@
 
-<?php //die(var_dump($experiences)); ?>
-
-
 	<div class="container col-sm-12" float="center" >
 
 		<h4 align="center"> Mes expériences &nbsp; &nbsp; &nbsp;<a title="Ajouter une nouvelle experience" href='index.php?p=users.newExperience'><span style="color:grey" align="right" class='glyphicon glyphicon-plus' aria-hidden='true'></span></a></h4>
@@ -21,6 +18,7 @@
 							<div class="col-sm-11">
 								<div class="row">
 									<div class="col-lg-6 col-sm-push-1 ">
+										<p><em> Date du voyage : Du  <?=$experience->date_debut;?> au <?=$experience->date_debut;?></em></p>
 										<p><em> <?=$experience->description;?></em></p>
 									</div>
 									<div class="col-lg-3 col-sm-push-1 alert-success">
