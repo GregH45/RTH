@@ -33,6 +33,7 @@ class CountryTable extends Table{
 		return $this->query("SELECT Name
 						FROM continent c, encompasses e 
 						WHERE c.Name = e.Continent AND e.Country = ?",[$code], null, true);
+	}
 	
 	/* Récupération de la langue en fonction du code du pays */
 	public function getLanguages($country) {
