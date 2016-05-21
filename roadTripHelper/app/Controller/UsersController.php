@@ -14,6 +14,9 @@ class UsersController extends AppController{
 	public function __construct(){
 		parent::__construct();
 		$this->loadModel('User');
+		$this->loadModel('Continent');
+		$this->loadModel('Country');
+		$this->loadModel('City');
 	}
 
 	public function login(){
@@ -89,10 +92,8 @@ class UsersController extends AppController{
 	}
 
 	public function pagePerso(){
-		//$date_debut = $this->Post->getDateFormat($experience->date_debut);
-		//$date_fin = $this->Post->getDateFormat($experience->date_fin);
+
 		$experiences = $this->User->showExperiences();
-		//$this->render('user.pagePerso', compact('experiences', 'date_debut', 'date_fin'));
 		$this->render('user.pagePerso', compact('experiences'));
 	}
 
@@ -102,7 +103,28 @@ class UsersController extends AppController{
 
 		if(!empty($_POST))
 		{
-			$errors = $this->User->newExperience($_POST['titre'], $_POST['description'], $_POST['date_debut'], $_POST['date_fin'], $_POST['plus1'], $_POST['plus2'], $_POST['plus3'], $_POST['moins1'], $_POST['moins2'], $_POST['moins3']);
+
+			$villes = explode(" - ", $_POST['listeVilles']);
+			$i = 0;
+			$destination = array();
+
+			foreach ($villes as $ville){
+
+				$codeCountry = $this->City->getCodePaysByCity($ville);
+				$continent = $this->Country->getContinent($codeCountry[0]->Country);
+				$country = $this->Country->getNameByCode($codeCountry[0]->Country);
+				$continent = $continent[0]->Name;
+				$country = $country[0]->Name;
+
+				$destination[$i][1] = utf8_encode($continent);
+				$destination[$i][2] = utf8_encode($country);
+				$destination[$i][3] = utf8_encode($ville);
+
+				$i = $i+1;
+
+			}
+
+			$errors = $this->User->newExperience($_POST['titre'], $_POST['description'], $_POST['date_debut'], $_POST['date_fin'], $_POST['plus1'], $_POST['plus2'], $_POST['plus3'], $_POST['moins1'], $_POST['moins2'], $_POST['moins3'], $destination);
 			
 			if($errors==0){
 				header('Location: index.php?p=users.pagePerso');
@@ -111,8 +133,53 @@ class UsersController extends AppController{
 			} 
 		}
 
+	
 		$form = new BootstrapForm($_POST);
-		$this->render('user.newExperience', compact('form', 'errors'));	
+		$this->render('user.newExperience', compact('errors', 'form'));
+
+	}
+
+	public function selectDynamiques(){
+
+		if(isset($_GET['pays'])){
+			
+			$codePays = $this->Country->getCodeByName($_GET['pays']);
+			$cits = $this->City->getCitiesByCountry($codePays[0]->Code);
+			$cities = array();
+			$i = 0;
+			  foreach ($cits as $cit){
+				$cities[$i][] = utf8_encode($cit->Name);
+				$i = $i+1;
+			  }
+
+			echo json_encode($cities);
+
+		}elseif(isset($_GET['continent'])) {
+
+			$counts = $this->Country->getCountriesByContinent($_GET['continent']);
+			$countries = array();
+			$i = 0;
+			  foreach ($counts as $count){
+				$countries[$i][] = utf8_encode($count->Name);
+				$i = $i+1;
+			  }
+
+			echo json_encode($countries);
+
+		}else{
+
+
+			$conts = $this->Continent->all();
+
+			$continents = array();
+			$i = 0;
+			  foreach ($conts as $cont){
+				$continents[$i][] = utf8_encode($cont->Name);
+				$i = $i+1;
+			  }
+
+			echo json_encode($continents);
+		}
 
 	}
 }

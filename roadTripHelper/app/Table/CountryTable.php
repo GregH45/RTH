@@ -22,6 +22,7 @@ class CountryTable extends Table{
 						WHERE Code = ? ",[$code], null, true);
 	}
 
+
 	public function getContinent($code){
 		return $this->query("SELECT Name
 						FROM continent c, encompasses e 

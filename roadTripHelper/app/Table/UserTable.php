@@ -126,9 +126,9 @@ class UserTable extends Table{
 
 	}
 
-	public function newExperience($titre, $description, $date_debut, $date_fin, $plus1, $plus2, $plus3, $moins1, $moins2, $moins3){
+	public function newExperience($titre, $description, $date_debut, $date_fin, $plus1, $plus2, $plus3, $moins1, $moins2, $moins3, $listeDestinations){
 
-		if($titre=="" || $description=="" || $date_debut=="jj/mm/aaaa" || $date_fin=="jj/mm/aaaa"){
+		if($titre=="" || $description=="" || $date_debut=="jj/mm/aaaa" || $date_fin=="jj/mm/aaaa" ||$listeDestinations==""){
 			return 1;
 		}
 
@@ -136,6 +136,25 @@ class UserTable extends Table{
 
 			$this->query('INSERT INTO experience
 						VALUES ("","'.$userId.'","'.$titre.'","'.$description.'","0","'.$plus1.';'.$plus2.';'.$plus3.'","'.$moins1.';'.$moins2.';'.$moins3.'","false","'.$date_debut.'","'.$date_fin.'")',null,false);
+
+			$id_exp = $this->query('SELECT id FROM experience WHERE id_user = "'.$userId.'" AND titre="'.$titre.'"');
+		
+			$id_exp = $id_exp[0]->id;
+
+
+			
+			foreach ($listeDestinations as $destination) {
+				
+				$continent = $destination[1];
+				$country = $destination[2];
+				$city = $destination[3];
+
+				$this->query('INSERT INTO villes_parcourues VALUES ("", "'.$id_exp.'", "'.$continent.'", "'.$country.'", "'.$city.'")');
+
+			}
+
+			
+
 		return 0;
 	}
 

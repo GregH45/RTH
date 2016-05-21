@@ -40,13 +40,11 @@ Class BootstrapForm extends Form{
 	}
 	
 
-	public function select($name, $label,$options){
-	
-		$label = '<label>  '. $label .' </label>';
-		
+	public function select($name){
+			
 		$input = '<select classe = "form-control" name = "' . $name . '">';
 		
-		foreach( $options as $k => $v)
+		/*foreach( $options as $k => $v)
 		{
 			$attributes = '';
 			
@@ -57,11 +55,11 @@ Class BootstrapForm extends Form{
 			
 			
 			$input .= "<option value = '$k'$attributes>$v</option>";
-		}
+		}*/
 		
 		$input .= '</select>';
 		
-		return $this->surround($label.$input);
+		return $this->surround($input);
 	
 	}
 	
