@@ -153,7 +153,23 @@ class ExperienceTable extends Table{
 			
 		}
 		return $res;
-		
 	}	
 
+	public function getExperienceOrderBy($orderBy) {
+		if($orderBy == 'nb_likes') {
+			$res = $this->query("SELECT * 
+					FROM experience
+					WHERE accepte = 1 
+					ORDER BY nb_likes DESC ");
+		}
+		else {
+			if($orderBy == 'date') {
+			$res = $this->query("SELECT * 
+					FROM experience 
+					WHERE accepte = 1 
+					ORDER BY date_debut DESC ");
+			}
+		}
+		return $res;	
+	}
 }
