@@ -25,10 +25,10 @@ class PostController extends AppController{
 
 
 	public function experiences() {
-		$languages = $this->Country->getLanguages('F');
-		$politics = $this->Country->getPolitics('F');
-		$country = $this->Country->getCountryInfos('F');
+
 		$continents = $this->Continent->all();
+
+
 
 		// Continent sélectionné
 		if(isset($_GET['id'])) {
@@ -47,13 +47,20 @@ class PostController extends AppController{
 			$currentContinent = 'Continent';
 			if(isset($_GET['filter'])) {
 				$experiences = $this->Experience->getExperienceOrderBy($_GET['filter']);
-			}	
+			}
 			else {
 				$experiences = $this->Experience->getExperiencesValid();
 			}
 		}
 		// Pays sélectionné
 		if(isset($_GET['code'])) {
+			$languages = $this->Country->getLanguages($_GET["code"]);
+			$country = $this->Country->getCountryInfos($_GET["code"]);
+			$capital = $this->Country->getCountryInfos($_GET["code"])[0]->Capital;
+			$area = $this->Country->getCountryInfos($_GET["code"])[0]->Area;
+			$pop = $this->Country->getCountryInfos($_GET["code"])[0]->Population;
+
+			$politics = $this->Country->getPolitics($_GET["code"]);
 			$cities = $this->City->getCitiesByCountry($_GET['code']);
 			$currentCountry = $this->Country->getNameByCode($_GET['code']);
 			$currentCountryCode = $_GET['code'];
@@ -68,7 +75,7 @@ class PostController extends AppController{
 			else {
 				$experiences = $this->Experience->getExperiencesValidByCountry($currentCountry);
 			}
-			
+
 		}
 		else {
 			$currentCountry = 'Pays';
@@ -86,6 +93,7 @@ class PostController extends AppController{
 			$currentCountry = $currentCountry[0]->Name;
 			$currentContinent = $currentContinent[0]->Name;
 			$countries = $this->Country->getCountriesByContinent($currentContinent);
+			$muse = $this->Country->getMuseFromCity($_GET["id2"]);
 
 			if(isset($_GET['filter'])) {
 				$experiences = $this->Experience->getExperiencesValidByCity($_GET['id2'], $_GET['filter']);
@@ -93,15 +101,14 @@ class PostController extends AppController{
 			else {
 				$experiences = $this->Experience->getExperiencesValidByCity($_GET['id2']);
 			}
-			
+
 
 		}else{
 			$currentCity = 'Villes';
 		}
 
-		$this->render('post.experiences',compact('continents', 'countries', 'cities', 'experiences', 'currentContinent', 
-			'currentCountry', 'currentCity', 'languages', 'politics', 'country', 'currentCountryCode'));
-
+		$this->render('post.experiences',compact('continents', 'countries', 'cities', 'experiences', 'currentContinent','muse',
+			'currentCountry', 'currentCity', 'languages', 'politics', 'country', 'currentCountryCode','capital','area','pop'));
 	}
 
 

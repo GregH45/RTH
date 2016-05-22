@@ -1,26 +1,28 @@
-<div class="panel panel-default">
-  <div class="panel-body">
-  Informations générales sur le pays : <br />
-  <li>Capitale : <?= $this->Country->getCountryInfos($_GET["code"])[0]->Capital ?></li>
-  <li>Superficie : <?=$this->Country->getCountryInfos($_GET["code"])[0]->Area ?> m²</li>
-  <li>Population : <?= $this->Country->getCountryInfos($_GET["code"])[0]->Population ?> habitants</li>
-  	Langue(s) parlée(s) :
-    <?php  foreach ($this->Country->getLanguages($_GET["code"]) as $language):  ?>
-		<?= $language->Name ?>,
-	<?php endforeach?><br/>
-	Politique du pays  :
-    <?php  foreach ($this->Country->getPolitics($_GET["code"]) as $politic):  ?>
-		<?= $politic->Government ?>,
-	<?php endforeach?>
+<div class='panel panel-default'>
+  		<div class='panel-body'>
+<?php if (isset($_GET["code"])) {
+		echo("
+  		Informations générales sur le pays : <br />
+  		<li>Capitale : ".$capital."</li>
+  		<li>Superficie :".$area." m²</li>
+  		<li>Population : ".$pop." habitants</li>
+  		Langue(s) parlée(s) :");
+    	foreach ($languages as $language)
+			echo ($language->Name.",");
+		echo("<br/> Politique du pays  :");
+    	foreach ($politics as $politic)
+			echo($politic->Government.",");
 
-	<? if (isset($_GET["id2"])) ?>
-	<br/>
-	Musés de la Ville :
-    <?php  foreach ($this->Country->getMuseFromCity($_GET["id2"]) as $muse):  ?>
-		<?= $muse->NOM ?>,
-	<?php endforeach?><br/>
+		echo("<br/>");
+	}
+	if (isset($_GET["id2"]))
+	echo("Musés de la Ville :");
+    foreach ($muse as $muses)
+		echo($muses->NOM.",");
+	?>
   </div>
 </div>
+
 
 
 <?php
