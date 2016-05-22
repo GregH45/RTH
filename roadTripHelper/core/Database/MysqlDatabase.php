@@ -20,7 +20,7 @@ class MysqlDatabase extends Database{
 	private function getPDO(){
 
 		//$pdo = new PDO('mysql:dbname=roadtriphelper;host=localhost','root','root');
-		$pdo = new PDO('mysql:dbname=roadtriphelper;host=localhost;charset=utf8','root','root');
+		$pdo = new PDO('mysql:dbname=roadtriphelper;host=localhost;charset=utf8','root','');
 
 		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$this->pdo = $pdo;
