@@ -1,28 +1,28 @@
 <div class="panel panel-default">
   <div class="panel-body">
   Informations générales sur le pays : <br />
-  <li>Capitale : <?= $country[0]->Capital ?></li>
-  <li>Superficie : <?= $country[0]->Area ?> m²</li>
-  <li>Population : <?= $country[0]->Population ?> habitants</li>
+  <li>Capitale : <?= $this->Country->getCountryInfos($_GET["code"])[0]->Capital ?></li>
+  <li>Superficie : <?=$this->Country->getCountryInfos($_GET["code"])[0]->Area ?> m²</li>
+  <li>Population : <?= $this->Country->getCountryInfos($_GET["code"])[0]->Population ?> habitants</li>
   	Langue(s) parlée(s) :
-    <?php  foreach ($languages as $language):  ?>
+    <?php  foreach ($this->Country->getLanguages($_GET["code"]) as $language):  ?>
 		<?= $language->Name ?>,
 	<?php endforeach?><br/>
 	Politique du pays  :
-    <?php  foreach ($politics as $politic):  ?>
+    <?php  foreach ($this->Country->getPolitics($_GET["code"]) as $politic):  ?>
 		<?= $politic->Government ?>,
 	<?php endforeach?>
   </div>
 </div>
 
 
-<?php 
+<?php
 if($currentContinent == 'Continent' && $currentCountry == 'Pays' && $currentCity == 'Villes') {
 	$lien = '';
-} 
+}
 if($currentContinent != 'Continent') {
 	$lien = 'id='.$currentContinent.'&';
-} 
+}
 if($currentCountry != 'Pays') {
 	$lien = 'code='.$currentCountryCode.'&';
 }
@@ -95,10 +95,10 @@ if($currentCity != 'Villes') {
 				<a href='?p=post.incrementeLike&id=<?=$experience->id;?>' title="J'adore !">
 					<span class='glyphicon glyphicon-heart grey text-default' aria-hidden='true'></span> <span class="badge"><?= $experience->nb_likes;?></span></a>
 				<a href='index.php?p=users.logout' title="Je veux y aller !" ><span class='glyphicon glyphicon-plane text-default' aria-hidden='true'></span></a>
-				<a target="_blank" title="Facebook" href="https://www.facebook.com/sharer.php?u=google.fr&t=RoadTripHelper" rel="nofollow" 
+				<a target="_blank" title="Facebook" href="https://www.facebook.com/sharer.php?u=google.fr&t=RoadTripHelper" rel="nofollow"
 					onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;">
 					<img src="img/facebook.png" alt="Facebook" /></a>
-				<?php if(isset($_SESSION["admin"]) && ($_SESSION["admin"] == 1))  
+				<?php if(isset($_SESSION["admin"]) && ($_SESSION["admin"] == 1))
 					echo("<form action = '?p=admin.post.delete' method = 'post' style= 'display : inline;'>
 							<input type= 'hidden' name ='id' value = '<?= $experience->id;?>'>
 							<button type= 'submit' class ='btn btn-danger'>Supprimer</button>
@@ -112,8 +112,8 @@ if($currentCity != 'Villes') {
 			<div class="col-md-6">
 				<p><strong>Date du voyage :</strong>  Du  <?=$experience->date_debut;?> au <?=$experience->date_debut;?></p>
 				<p><?=$experience->description;?></p>
-			
-			</div>			
+
+			</div>
 			<div class="col-md-6">
 				<div class="col-lg-5 col-sm-push-1 alert-success">
 					&nbsp;<h4 align="center"><b>Les plus <span class="glyphicon glyphicon-ok"></span></b></h4>&nbsp;
@@ -131,7 +131,7 @@ if($currentCity != 'Villes') {
 						<li><?=$moins2;?></li>
 						<li><?=$moins3;?></li>
 						<br />
-					</ul>								
+					</ul>
 				</div>
 			</div>
 		</div>
