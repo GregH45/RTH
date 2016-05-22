@@ -16,9 +16,11 @@
 		echo("<br/>");
 	}
 	if (isset($_GET["id2"]))
+	{
 	echo("Musés de la Ville :");
     foreach ($muse as $muses)
 		echo($muses->NOM.",");
+	}
 	?>
   </div>
 </div>
