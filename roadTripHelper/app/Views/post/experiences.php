@@ -12,6 +12,13 @@
     <?php  foreach ($this->Country->getPolitics($_GET["code"]) as $politic):  ?>
 		<?= $politic->Government ?>,
 	<?php endforeach?>
+
+	<? if (isset($_GET["id2"])) ?>
+	<br/>
+	Musés de la Ville :
+    <?php  foreach ($this->Country->getMuseFromCity($_GET["id2"]) as $muse):  ?>
+		<?= $muse->NOM ?>,
+	<?php endforeach?><br/>
   </div>
 </div>
 
