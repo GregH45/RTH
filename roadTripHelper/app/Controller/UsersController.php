@@ -102,7 +102,7 @@ class UsersController extends AppController{
 
 	//Ajout d'une nouvelle experiences
 	public function newExperience(){
-		
+
 	$errors = 0;
 
 		if(!empty($_POST))
@@ -129,15 +129,15 @@ class UsersController extends AppController{
 			}
 
 			$errors = $this->User->newExperience($_POST['titre'], $_POST['description'], $_POST['date_debut'], $_POST['date_fin'], $_POST['plus1'], $_POST['plus2'], $_POST['plus3'], $_POST['moins1'], $_POST['moins2'], $_POST['moins3'], $destination);
-			
+
 			if($errors==0){
 				header('Location: index.php?p=users.pagePerso');
 			} else if($errors==1){
 				$errors = "Veuillez remplir tous les champs";
-			} 
+			}
 		}
 
-	
+
 		$form = new BootstrapForm($_POST);
 		$this->render('user.newExperience', compact('errors', 'form'));
 
@@ -147,7 +147,7 @@ class UsersController extends AppController{
 	public function selectDynamiques(){
 
 		if(isset($_GET['pays'])){
-			
+
 			$codePays = $this->Country->getCodeByName($_GET['pays']);
 			$cits = $this->City->getCitiesByCountry($codePays[0]->Code);
 			$cities = array();

@@ -6,7 +6,10 @@
 	-->
 </p>
 
+<!--
+ Affiche toute les expériences qui ne sont pas acceptés
 
+-->
 <table class="table">
 	<thead>
 	<tr>

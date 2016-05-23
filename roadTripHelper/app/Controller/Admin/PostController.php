@@ -18,7 +18,8 @@ class PostController extends AppController{
 
 	}
 
-
+	//redirige l'admin vers la page admin.post.index
+	// si un utilisateur non admin essaye d'acceder la page, redirection vers index
 	public function index(){
 
 		if ($_SESSION["admin"] == 1)
@@ -32,7 +33,7 @@ class PostController extends AppController{
 
 	}
 
-
+	//supprime une Experience
 	public function delete()
 	{
 
@@ -46,7 +47,7 @@ class PostController extends AppController{
 
 	}
 
-
+	//accepte une expérience pour l'afficher sur le site
 	public function accepter()
 	{
 		if(!empty($_POST))

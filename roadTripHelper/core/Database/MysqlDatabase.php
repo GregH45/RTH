@@ -17,9 +17,10 @@ class MysqlDatabase extends Database{
 		$this->db_host = $db_host;
 	}
 
+	/*
+	Contruit la connection a la base de données
+	*/
 	private function getPDO(){
-
-		//$pdo = new PDO('mysql:dbname=roadtriphelper;host=localhost','root','root');
 		$pdo = new PDO('mysql:dbname=roadtriphelper;host=localhost;charset=utf8','root','');
 
 		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

@@ -1,5 +1,9 @@
 <?php
 
+	/*
+	affiche les informations sur le pays ou la ville
+	si les listes de selections sont remplies
+	*/
  if (isset($_GET["code"])) {
 		echo("
 		<div class='panel panel-default'>

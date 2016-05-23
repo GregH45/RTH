@@ -29,6 +29,9 @@ class CountryTable extends Table{
 						WHERE Name = ? ",[$name], null, true);
 	}
 
+	/*
+	Récupère le nom d'un contient via son code
+	*/
 	public function getContinent($code){
 		return $this->query("SELECT Name
 						FROM continent c, encompasses e
