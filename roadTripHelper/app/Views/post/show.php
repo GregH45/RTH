@@ -1,5 +1,8 @@
-<?php list($plus1, $plus2, $plus3) = split(";", $experience->plus);
-	list($moins1, $moins2, $moins3) = split(";", $experience->moins); ?>
+<?php 
+/* Page pour afficher une expérience */
+
+list($plus1, $plus2, $plus3) = split(";", $experience->plus);
+list($moins1, $moins2, $moins3) = split(";", $experience->moins); ?>
 
 <div class="panel panel-default">
 	<div class="panel-heading">
