@@ -1,6 +1,5 @@
 <?php
 
-
  if (isset($_GET["code"])) {
 		echo("
 		<div class='panel panel-default'>
@@ -23,7 +22,7 @@
 	if (isset($_GET["id2"])){
 		echo("<div class='panel panel-default'>
   		<div class='panel-body'>
-  		Musés de la Ville :");
+  		Musées de la Ville :");
 		foreach ($muse as $muses){
 			echo($muses->NOM.",");
 		}

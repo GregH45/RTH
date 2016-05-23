@@ -11,8 +11,4 @@ class ExperienceEntity extends Entity{
 		return 'index.php?p=post.show&id='.$this->id;
 	}
 	
-	public function getUrl2() {
-		return 'index.php?p=post.show&filter=date';		
-	}
-	
 }

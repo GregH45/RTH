@@ -7,12 +7,8 @@ class ExperienceTable extends Table{
 
 	protected $table = 'experience';
 
-	/**
-	 * Récupère les derniers articles
-	 * @return array
-	 */
 
-
+	/* Incrémentation champs "nb_likes" dans la table */
 	public function addLike($id) {
 		$nb = $this->getNbLikes($id) +1;
 		return $this->query("UPDATE experience
@@ -21,6 +17,7 @@ class ExperienceTable extends Table{
 				", [$nb, $id],true);
 	}
 
+	/* Récupération du nombre de likes d'un article */
 	public function getNbLikes($id) {
 		$datas = $this->query("
 				SELECT nb_likes
@@ -31,6 +28,7 @@ class ExperienceTable extends Table{
 	}
 
 
+	/* Récupération des expériences non valides */
 	public function getNonValideExp()
 	{
 		$exps = $this->query("SELECT id,titre, description
@@ -39,25 +37,28 @@ class ExperienceTable extends Table{
 		return $exps;
 	}
 
+	/* Validation d'une expérience */
 	public function validerExp($id)
 	{
-		//die(var_dump($id));
 		return $this->query("UPDATE experience SET experience.accepte = ? WHERE id = ?",[1,$id],true);
 
 	}
 
+	/* Récupération des expériences valides */
 	public function getExperiencesValid(){
 		return $this->query("SELECT *
 						FROM experience
 						WHERE accepte = 1");
 	}
 
+	/* Récupération des villes parcourues */
 	public function getVillesParcourues($id) {
 		return $this->query("SELECT *
 						FROM villes_parcourues
 						WHERE id_exp = ?", [$id]);
 	}
 
+	/* Récupération des experiences en fonction du continent selectionné */
 	public function getExperiencesValidByContinent($continent, $orderBy = '') {
 		if($orderBy != '' && $orderBy == 'nb_likes') {
 			$res = $this->query("SELECT * 
@@ -90,6 +91,7 @@ class ExperienceTable extends Table{
 		return $res;		
 	}
 
+	/* Récupération des experiences en fonction du pays selectionné */
 	public function getExperiencesValidByCountry($country, $orderBy = '') {
 		if($orderBy != '' && $orderBy == 'nb_likes') {
 			$res = $this->query("SELECT * 
@@ -122,6 +124,7 @@ class ExperienceTable extends Table{
 		return $res;	
 	}
 
+	/* Récupération des experiences en fonction de la ville selectionnée */
 	public function getExperiencesValidByCity($city, $orderBy = '') {
 		if($orderBy != '' && $orderBy == 'nb_likes') {
 			$res = $this->query("SELECT * 
@@ -155,6 +158,7 @@ class ExperienceTable extends Table{
 		return $res;
 	}	
 
+	/* Récupération des experiences avec un orderby */
 	public function getExperienceOrderBy($orderBy) {
 		if($orderBy == 'nb_likes') {
 			$res = $this->query("SELECT * 

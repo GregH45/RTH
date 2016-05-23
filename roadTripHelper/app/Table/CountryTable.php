@@ -50,6 +50,7 @@ class CountryTable extends Table{
 						WHERE Country = ? ",[$country]);
 	}
 
+	/* Récupération des données du pays en fonction de son code */
 	public function getCountryInfos($country) {
 		$res = $this->query("SELECT *
 						FROM country
@@ -58,6 +59,7 @@ class CountryTable extends Table{
 	}
 
 
+	/* Récupération de la capitale en fonction du code du pays */
 	public function getCapitale($code)
 	{
 		$res = $this->query("SELECT Capital from country where code = ?",[$code]);
