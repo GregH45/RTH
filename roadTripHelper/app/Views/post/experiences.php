@@ -1,7 +1,10 @@
-<div class='panel panel-default'>
-  		<div class='panel-body'>
-<?php if (isset($_GET["code"])) {
+<?php
+
+
+ if (isset($_GET["code"])) {
 		echo("
+		<div class='panel panel-default'>
+  		<div class='panel-body'>
   		Informations générales sur le pays : <br />
   		<li>Capitale : ".$capital."</li>
   		<li>Superficie :".$area." m²</li>
@@ -13,16 +16,22 @@
     	foreach ($politics as $politic)
 			echo($politic->Government.",");
 
-		echo("<br/>");
+		echo("<br/></div>
+		</div>");
 	}
-	if (isset($_GET["id2"]))
-	echo("Musés de la Ville :");
-    foreach ($muse as $muses)
-		echo($muses->NOM.",");
-	?>
-  </div>
-</div>
 
+	if (isset($_GET["id2"])){
+		echo("<div class='panel panel-default'>
+  		<div class='panel-body'>
+  		Musés de la Ville :");
+		foreach ($muse as $muses){
+			echo($muses->NOM.",");
+		}
+		echo("</div>
+		</div>");
+	}
+  
+?>
 
 
 <?php
@@ -90,8 +99,8 @@ if($currentCity != 'Villes') {
 
 
 <?php foreach ($experiences as $experience):
-	list($plus1, $plus2, $plus3) = split(";", $experience->plus);
-	list($moins1, $moins2, $moins3) = split(";", $experience->moins); ?>
+	list($plus1, $plus2, $plus3) = explode(";", $experience->plus);
+	list($moins1, $moins2, $moins3) = explode(";", $experience->moins); ?>
 
 <div class="panel panel-default">
 	<div class="panel-heading">

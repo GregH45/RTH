@@ -1,0 +1,129 @@
+@CHARSET "ISO-8859-1";
+    body{
+    font-family:Arial;
+    background: url(../img/roadtrip-pic.jpg) no-repeat center fixed;
+    margin:0px;
+    padding:0px;
+    }    
+    
+    #container{
+    position:relative;
+    width:990px;
+    margin:auto;
+    background: url(../img/roadtrip-pic.jpg) no-repeat center fixed;
+    padding:20px 0px 20px 0px;
+    }
+    
+    #container h1{
+    margin:0px 0px 10px 20px;
+    }
+    
+    #container #map{
+    width:700px;
+    height:500px;
+    margin:auto;
+    }
+    
+    #container #panel{
+    width:700px;
+    margin:auto;
+    }
+    
+    #container #destinationForm{
+    margin:0px 0px 20px 0px;
+    background:#EEEEEE;
+    padding:10px 20px;
+    border:solid 1px #C0C0C0;
+    }
+    
+    #container #destinationForm input[type=text]{
+    border:solid 1px #C0C0C0;
+    }
+    
+    .adp-substep{
+    color:white;
+    font-weight: bold;
+    font-size:16px;
+    }
+    
+     .adp-summary{
+    color:white;
+    font-weight: bold;
+    font-size: 16px;
+    }
+    
+    #directions-panel{
+    color:white;
+    font-weight: bold;
+    font-size:20px;
+    text-shadow:1px 1px #000;
+    }
+    
+    h1{
+    color:white;
+    font-weight: bold;
+    text-shadow:5px 5px 2px black;
+    }
+    
+    
+    
+      #map {
+        height: 100%;
+      }
+#floating-panel {
+
+  z-index: 5;
+  background: url(../img/roadtrip-pic.jpg) no-repeat center fixed;
+  padding: 5px;
+  text-align: center;
+  font-family: 'Roboto','sans-serif';
+
+}
+#mode {
+
+  z-index: 5;
+  background: #fff;
+  padding: 5px;
+  text-align: center;
+  font-family: 'Roboto','sans-serif';
+
+}
+#md{
+
+    font-size: 25px;
+	padding-left:30%;
+}
+#right-panel {
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+  float: right;
+}
+
+#right-panel select, #right-panel input {
+  font-size: 15px;
+}
+
+#right-panel select {
+  width: 80%;
+}
+
+#right-panel i {
+  font-size: 12px;
+}
+
+#right-panel {
+    margin-top: 35px;
+    background:#EEEEEE;
+	border : 1px solid black;
+    width: 22%;
+    float: left;
+    text-align: left;
+    padding-top: 20px;
+    height: 80 %;
+    padding-bottom: 10px;
+      }
+#submit{
+	width:80%;
+}
+    

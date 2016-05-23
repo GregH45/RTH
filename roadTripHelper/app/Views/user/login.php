@@ -1,5 +1,9 @@
 
-<?php  if($errors) : ?>	
+<?php 
+
+/*Gestion des erreurs si mauvais identifiants*/
+
+ if($errors) : ?>	
 	<div class="alert alert-danger">
 	
 		Identifiants Incorrects
@@ -8,10 +12,14 @@
 <?php  endif;?>
 
 <?php 
+
+/*Redirection vers la page perso si les identifiants sont bons */
+
 if(App::getUsername()!='Login'){
 	header('Location: index.php?p=users.pagePerso');
 }?>
 
+	<!--Formulaire de connexion -->
 		<div class="col-sm-push-3 col-sm-6">
 			<h4 align="right"> Mon compte </h4>
 			<form method = "post">

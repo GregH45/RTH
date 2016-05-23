@@ -15,6 +15,8 @@ class UserTable extends Table{
 	 * @Param $password
 	 * @return boolean
 	 */
+
+	//Connexion de l'utilisateur
 	public function login($username, $password){
 
 		$user = $this->query('SELECT *
@@ -32,14 +34,17 @@ class UserTable extends Table{
 
 	}
 
+	//Déconnexion
 	public function logout(){
 
 		$_SESSION['auth'] = -1;
 		return true;
 	}
 
+	//Renvoie true si un utilisateur est connecté
 	public function logged(){  return isset($_SESSION['auth']);  }
 
+	//Récupère l'id de l'utilisateur courant
 	public function getUserId(){
 
 		if($this->logged()){
@@ -48,6 +53,7 @@ class UserTable extends Table{
 		return false;
 	}
 
+	//Récupère le nom de l'utilisateur courant
 	public function getUsername(){
 
 			$userId = $this->getUserId();
@@ -63,7 +69,7 @@ class UserTable extends Table{
 				return false;
 	}
 
-
+	//Création d'un nouveau compte utilisateur dans la base de donnée
 	public function newAccount($name, $lastname, $username, $email, $password){
 
 		if($name=="" || $lastname=="" || $username=="" || $password=="" || $email == ""){
@@ -83,6 +89,7 @@ class UserTable extends Table{
 			$this->query("INSERT INTO user
 							  VALUES ('','".$username."','".$criptedPassword."','".$name."','".$lastname."','".$email.",0')",null,false);
 
+			//Vérification de l'insertion du nouvel utilisateur
 			if($this->login($username, $password)){
 				return 0;
 			}
@@ -107,6 +114,7 @@ class UserTable extends Table{
 		return false;
 	}
 
+	//Récupération du détail des experiences
 	public function showExperiences(){
 
 		$userId = $this->getUserId();
@@ -126,6 +134,7 @@ class UserTable extends Table{
 
 	}
 
+	//Création d'une nouvelle expériences
 	public function newExperience($titre, $description, $date_debut, $date_fin, $plus1, $plus2, $plus3, $moins1, $moins2, $moins3, $listeDestinations){
 
 		if($titre=="" || $description=="" || $date_debut=="jj/mm/aaaa" || $date_fin=="jj/mm/aaaa" ||$listeDestinations==""){
@@ -141,8 +150,6 @@ class UserTable extends Table{
 		
 			$id_exp = $id_exp[0]->id;
 
-
-			
 			foreach ($listeDestinations as $destination) {
 				
 				$continent = $destination[1];
@@ -151,9 +158,7 @@ class UserTable extends Table{
 
 				$this->query('INSERT INTO villes_parcourues VALUES ("", "'.$id_exp.'", "'.$continent.'", "'.$country.'", "'.$city.'")');
 
-			}
-
-			
+			}	
 
 		return 0;
 	}

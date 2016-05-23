@@ -1,4 +1,9 @@
+
+
 <?php 
+
+/*Gestion des erreurs de saisie du formulaire de création de compte*/
+
 if($errors!="0"){ 
 	echo "<div class='alert alert-danger'>".$errors."</div>" ;
 } 
@@ -6,6 +11,9 @@ if(App::getUsername()!='Login'){
 	echo "<div class='alert alert-danger'>Vous êtes déjà connecté</div>";
 }
 ?>
+
+<!-- Formulaire création d'un compte -->
+
 	<div class="col-sm-push-3 col-sm-6">
 		<form method = "post">
 			<h4 align="right"> Créer un compte </h4>

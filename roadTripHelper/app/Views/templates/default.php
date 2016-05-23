@@ -33,7 +33,7 @@
 
 			    	<div id="navbar" class="navbar-collapse collapse">
 			            <ul class="nav navbar-nav">
-			    			<li><a href="index.php?p=post.roadTrip">Road Trip</a></li>
+			    			<li><a href="index.php?p=roadTrip.mapitineraire">Road Trip</a></li>
 			    			<li><a href="index.php?p=post.experiences">Expériences</a></li>
 			    			<?php if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1)  echo("
 			    				<li><a href='index.php?p=admin.post.index'>Administration</a></li>");

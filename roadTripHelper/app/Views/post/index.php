@@ -12,7 +12,7 @@
     <div class="col-lg-6">
     	<h2>Organiser un RoadTrip</h2>
         <p>Planifiez votre road trip en choisissant les destinations que vous souhaitez inclure au voyage. Choisissez un parcours proposé ou personnalisez le entièrement. Obtenez des informations complémentaires sur vos destinations choisies. </p>
-        <p><a class="btn btn-default" href="#" role="button">J'organise mon RoadTrip &raquo;</a></p>
+        <p><a class="btn btn-default" href="index.php?p=roadtrip.mapitineraire" role="button">J'organise mon RoadTrip &raquo;</a></p>
     </div>
     <div class="col-lg-6">
         <h2>Expériences</h2>

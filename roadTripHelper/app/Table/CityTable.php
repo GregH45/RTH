@@ -20,5 +20,12 @@ class CityTable extends Table{
 				WHERE c.Name = ?", [$city]);
 	
 	}
+
+	
+	public function getMuseFromCity($idcity)
+	{
+		$res = $this->query("SELECT distinct(m.NOM) FROM MuseFrance  m join city c on c.Name = m.Ville where m.Ville = ?",[$idcity]);
+		return $res;
+	}
  
 }

@@ -19,6 +19,7 @@ class UsersController extends AppController{
 		$this->loadModel('City');
 	}
 
+	//Connexion de l'utilisateur
 	public function login(){
 
 		$errors = false;
@@ -40,6 +41,7 @@ class UsersController extends AppController{
 
 	}
 
+	//Déconnexion
 	public function logout(){
 
 		$userName = $this->User->getUsername();
@@ -50,7 +52,7 @@ class UsersController extends AppController{
 		header('Location: index.php');
 	}
 
-
+	//Récupération du nom de l'utilisateur courant
 	public function getUsername(){
 
 		$userName = $this->User->getUsername();
@@ -63,7 +65,7 @@ class UsersController extends AppController{
 
 	}
 
-
+	//Création d'un nouveau compte et gestion erreur de saisie formulaire
 	public function newAccount(){
 
 		$errors = 0;
@@ -91,19 +93,21 @@ class UsersController extends AppController{
 
 	}
 
+	//Page perso de l'utilisateur
 	public function pagePerso(){
 
 		$experiences = $this->User->showExperiences();
 		$this->render('user.pagePerso', compact('experiences'));
 	}
 
+	//Ajout d'une nouvelle experiences
 	public function newExperience(){
 		
 	$errors = 0;
 
 		if(!empty($_POST))
 		{
-
+			/* Gestion des destinations saisies dans les select dynamiques */
 			$villes = explode(" - ", $_POST['listeVilles']);
 			$i = 0;
 			$destination = array();
@@ -139,6 +143,7 @@ class UsersController extends AppController{
 
 	}
 
+	//Gestion des select dynamiques vue des experiences
 	public function selectDynamiques(){
 
 		if(isset($_GET['pays'])){
